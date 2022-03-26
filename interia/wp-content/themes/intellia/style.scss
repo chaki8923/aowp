@@ -1,0 +1,646 @@
+/*
+Theme Name: MIRA
+Author: Chaki Ryou
+Version: 1.0
+License: GNU General Public License v2 or later
+*/
+
+
+@import "base";
+@import "single";
+@import "category";
+@import "component";
+@import "search";
+@import "sidebar";
+@import "404";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+//================================================================
+//ヘッダー
+//================================================================
+.header {
+  width: 40%;
+  height: 80px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background: rgb(181, 157, 161);
+  z-index: 30;
+  @include mq(ls){
+    width: 60%;
+  }
+  @include mq(md){
+    width: 70%;
+  }
+  @include mq(){
+    display: none;
+  }
+  
+  ul {
+    width: 100%;
+    height: 100%;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    @include mq(ls){
+      justify-content: center;
+    }
+  
+    li {
+      display: inline-block;
+      padding: 0 15px;
+      line-height: 50px;
+      transition: .3s;
+      &:hover{
+        opacity: .6;
+        transition: .3s;
+      }
+     
+      .sp-header--link {
+        color: #fff;
+        text-decoration: none;
+        font-family: $main-font;
+        position: relative;
+       
+        &::after{
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          content: '';
+          background: #fff;
+          height: 1px;
+          width: 0;
+          transition: .3s;
+        }
+        &:hover::after{
+          transition: .3s;
+          width: 100%;
+        }
+        img {
+          width: 24px;
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+}
+//==========================================================
+//スマホヘッダー
+//==========================================================
+.sp-header {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  background: rgb(181, 157, 161);
+  z-index: 13;
+  transition: .4s;
+  &.slidein{
+    transition: .4s;
+    transform: translateX(100%);
+  }
+  
+  ul {
+    width: 100%;
+    height: 100%;
+    list-style: none;
+    padding: 110px 15px;
+
+  
+    li {
+      display: list-item;
+      padding: 20px 15px;
+      line-height: 20px;
+     
+      a {
+        color: #fff;
+        text-decoration: none;
+        font-family: $main-font;
+        img {
+          width: 24px;
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+}
+
+//================================================================
+//ハンバーガー
+//================================================================
+.bar {
+  display: none;
+  width: 60px;
+  height: 60px;
+  background: #fff;
+  position: fixed;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  z-index: 25;
+  @include mq() {
+    display: block;
+  }
+  &-top {
+    background: rgb(181, 157, 161);
+    position: absolute;
+    height: 2px;
+    width: 25px;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: 0.3s;
+    &.active {
+      transition: 0.3s;
+      transform: rotate(45deg);
+      top: 30px;
+      left: 30%;
+    }
+  }
+  &-middle {
+    background: rgb(181, 157, 161);
+    position: absolute;
+    height: 2px;
+    width: 25px;
+    top: 29px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: 0.3s;
+    &.active {
+      transition: 0.3s;
+      opacity: 0;
+    }
+  }
+  &-bottom {
+    background: rgb(181, 157, 161);
+    position: absolute;
+    height: 2px;
+    width: 15px;
+    bottom: 20px;
+    &.active {
+      transition: 0.3s;
+      transform: rotate(-45deg);
+      bottom: 28px;
+      width: 25px;
+      left: 30%;
+    }
+  }
+}
+
+//================================================================
+//メイン
+//================================================================
+.main {
+  width: 100%;
+  background: rgb(248, 243, 245);
+  padding-top: 180px;
+  @include mq(ls){
+    padding-top: 160px;
+  }
+  @include mq(){
+    padding-top: 180px;
+  }
+  &-imgarea {
+    width: 100%;
+    height: 800px;
+    position: relative;
+    @include mq(){
+      height: 1000px;
+    }
+  }
+  &-inner {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    top: 150px;
+    right: 3em;
+    width: calc(100% - 142px);
+    height: calc(100% - 280px);
+    background: #fff;
+    @include mq(ls){
+      left: 10px;
+    }
+    @include mq(md){
+      top: 100px;
+      align-items: flex-start;
+    }
+    @include mq(){
+      width: 100%;
+      top: 50px;
+      left: 0;
+    }
+  }
+  &-text {
+    padding-left: 30px;
+    @include mq(){
+      padding-left: 10px;
+    }
+    h2 {
+      font-family: "Cormorant", sans-serif;
+      font-size: 38px;
+      line-height: 5rem;
+      letter-spacing: 0.3em;
+      color: $color;
+    }
+    p {
+      font-family: "Shippori Mincho", serif;
+      color: $color;
+    }
+    &_small {
+      margin-top: 20px;
+      line-height: 3rem;
+      @include mq(){
+        line-height: 2rem;
+      }
+    }
+  }
+}
+
+//================================================================
+//ブランドセクション
+//================================================================
+
+.bland {
+  width: 100%;
+  height: auto;
+  position: relative;
+  overflow: hidden;
+  @include mq(md){
+    height: auto;
+  }
+  @include mq(){
+    height: auto;
+    margin-bottom: 54px;
+  }
+  &-title{
+    position: relative;
+    &::after{
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      content: '';
+      width: 100px;
+      height: 1px;
+      background: $color;
+    }
+  }
+  &-left {
+    width: 45%;
+    height: auto;
+    float: left;
+    background: rgb(248, 243, 245);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    @include mq(){
+      position: relative;
+      width: 100%;
+    }
+    &_inner {
+      width: 400px;
+      height: auto;
+      @include mq(md){
+        padding: 12px;
+      }
+      @include mq(){
+        width: 375px;
+        padding: 0;
+        height: auto;
+      }
+      h2 {
+        font-family: "Cormorant", sans-serif;
+        font-size: 56px;
+        line-height: 5rem;
+        letter-spacing: 0.3em;
+        color: $font-color;
+        @include mq(md){
+     
+          font-size: 42px;
+        }
+        @include mq(){
+          text-align: center;
+          font-size: 32px;
+        }
+      }
+      p {
+        font-family: "Shippori Mincho", serif;
+        color: $color;
+        @include mq(){
+          width: 90%;
+          margin: auto;
+        }
+      }
+      a{
+        text-decoration: none;
+        color: $color;
+        padding: 10px 18px;
+        display: block;
+        margin: 24px auto;
+        width: 150px;
+        text-align: center;
+        border-radius: 20px;
+        font-family: $main-font;
+        background: rgb(248, 243, 245);
+        box-shadow: 5px 5px 10px rgba(0,0,0,.3);
+        transition: .3s;
+        &:hover{
+          box-shadow: -2px -2px 10px rgba(0,0,0,.3);
+          transition: .3s;
+
+        }
+      }
+    }
+  }
+  &-right {
+    height: 100%;
+    width: 554px;
+    background: #e6d9db;
+    float: right;
+    padding-top: 170px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    @include mq(ls){
+      right: 0px;
+    }
+    @include mq(md){
+      width: 50%;
+    }
+    @include mq(){
+      position: relative;
+      height: auto;
+      width: 100%;
+      padding-top: 0;
+    }
+    
+    &_inner{
+      width: 554px;
+      height: 720px;
+      background: #fff;
+      box-shadow: 70px 105px 60px rgba(0,0,0,.2);;
+      margin-top: 42px;
+      margin-left: -50px;
+      @include mq(ls){
+        right: 20px;
+      }
+      @include mq(md){
+        width: 377px;
+        height: 580px;
+        right: 0;
+      }
+      @include mq(){
+        margin-left: 0;
+        margin-top: 0;
+      }
+   
+      img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+}
+.carten{
+  width: 654px;
+  height: 90%;
+  position: absolute;
+  top: 210px;
+  right: 0px;
+  background: #fff;
+  z-index: 6;
+  @include mq(ls){
+    right: 0;
+  }
+  @include mq(md){
+    width: 54%;
+    right: 0;
+  }
+  @include mq(){
+    top: 0;
+    height: 100%;
+    width: 100%;
+    left: 0;
+  }
+  &.slide{
+    transform: translateX(110%);
+    transition: 1s;
+    @include mq(md){
+      transform: translateX(100%);
+      
+    }
+  }
+}
+
+.dark{
+  background: rgb(231,223,214);
+}
+
+//================================================================
+//マップ
+//================================================================
+.address{
+  width: 100%;
+  height: 350px;
+  background: rgb(181,157,161);
+  display: flex;
+  align-items: center;
+  @include mq(){
+    flex-wrap: wrap;
+    height: auto;
+  }
+  iframe{
+    width: 50%;
+    height: 100%;
+    @include mq(){
+      width: 100%;
+      height: 350px;
+    }
+  }
+  &-inner{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 48px 32px 0px 40px;
+    @include mq(){
+      width: 100%;
+      padding: 10px 20px 0 20px;
+      height: 230px;
+      align-items: flex-start;
+    }
+    
+    &_text{
+      // width: 100%;
+   
+      h2{
+        color: #fff;
+        font-family: $style-font;
+        font-size: 32px;
+        line-height: 3rem;
+      }
+      
+      p{
+        color: #fff;
+        font-family: $style-font;
+        line-height: 2rem;
+      }
+      ul{
+        list-style: none;
+        margin-top: 18px;
+        @include mq(){
+          display: none;
+        }
+        li{
+          display: inline-block;
+          padding: 15px 16px;
+          transition: .3s;
+          &:hover{
+            transition: .3s;
+            opacity: .6;
+          }
+          a{
+            text-decoration: none;
+            color: #fff;
+            img{
+              width: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
+
+.footer{
+    display: block;
+    width: 100%;
+    height: 50px;
+    background: rgb(94, 92, 92);
+    text-align: center;
+    @include mq(){
+      display: none;
+    }
+    ul {
+      width: 100%;
+      height: 100%;
+      list-style: none;
+      @include mq(){
+        padding: 20px 10px;
+      }
+      li {
+        display: inline-block;
+        padding: 0 15px;
+        line-height: 50px;
+        a {
+          color: #fff;
+          text-decoration: none;
+          font-family: $main-font;
+        }
+      }
+    }
+  }
+
+  .blog-page{
+    position: relative;
+    width: 75%;
+    height: 100vh;
+    float: left;
+    
+    @include mq(md){
+      float: none;
+      width: 100%;
+      height: auto;
+      margin: auto;
+    }
+    @include mq(){
+      padding-top: 142px;
+    }
+    
+  }
+
+  .blog-container{
+    padding: 120px 0 0 12px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+   
+    @include mq(md){
+      padding: 120px 0 0 0;
+      flex-wrap:  wrap;
+    }
+    @include mq(){
+      margin-bottom: 10px;
+      padding: 0;
+    }
+  }
+
+  .blog-card{
+    width: 48%;
+    height: 220px;
+    margin-right: 10px;
+    margin-bottom: 12px;
+    display: flex;
+    border: 2px #b59da1 solid;
+    text-decoration: none; 
+    @include mq(md){
+      width: 100%;
+      margin-bottom: 5px;
+      margin-right: 0;
+    }
+    
+    &__img{
+      width: 50%;
+      height: 100%;
+      overflow: hidden;
+      img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: .3s;
+        &.zoom{
+          transform: scale(1.2) rotate(5deg);
+          transition: .5s;
+        }
+      }
+    }
+    &__text{
+      width: 50%;
+      background: #fff;
+      padding: 10px 12px;
+      color: #333;
+      position: relative;
+      span{
+        position: absolute;
+        bottom: 2px;
+        left: 3px;
+      }
+    }
+  }
+
+ .map-wraper{
+   display: none;
+   @include mq(){
+    display: block;
+     position: fixed;
+     bottom: 10%;
+     left: 40%;
+     transform: translateX(-50%);
+     width: 100%;
+     height: 100px;
+     opacity: 0;
+   }
+   
+ }
+

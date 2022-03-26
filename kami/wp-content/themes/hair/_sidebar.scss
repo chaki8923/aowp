@@ -1,0 +1,279 @@
+.p-sidebar {
+  width: 25%;
+  padding: 20px 16px;
+  float: right;
+  background: rgb(250, 248, 249);
+  margin-top: 80px;
+  color: #333;
+  @include mq(md) {
+    margin-top: 0;
+    width: 100%;
+    float: none;
+    // background: rgb(245, 216, 245);
+  }
+  @include mq() {
+    // background: #333;
+    margin-bottom: 12px;
+  }
+  &_list {
+    text-decoration: none;
+    display: flex;
+    margin-top: 12px;
+    align-items: center;
+    &Img {
+      width: 30%;
+      height: 100%;
+      @include mq(md) {
+        width: 40%;
+      }
+      img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+  &_img {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    img{
+      width: 100%;
+      object-fit: cover;
+    }
+    @include mq(md) {
+      height: 300px;
+    }
+  }
+  &_title {
+    color: #333;
+  }
+  //最新情報
+  &_new {
+    list-style: none;
+    &Item {
+      width: 100%;
+      max-height: 150px;
+      margin-bottom: 20px;
+      @include mq(ls) {
+        max-height: 120px;
+      }
+      @include mq(md) {
+        max-height: 160px;
+        margin-bottom: 10px;
+        overflow: hidden;
+      }
+    
+    
+    }
+    &Text {
+      width: 70%;
+      color: #333;
+      padding: 5px 7px;
+      font-size: 12px;
+      @include mq(ls) {
+        font-size: 14px;
+        padding: 6px 14px;
+      }
+      @include mq() {
+        font-size: 12px;
+        padding: 12px 8px;
+      }
+      p {
+        @include mq() {
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+  //アーカイブ
+  &_arcive {
+    width: 100%;
+    margin-bottom: 24px;
+    &List {
+      display: none;
+    }
+    &Select {
+      background: rgb(252, 228, 235);
+      border: 1px solid #fff;
+      text-align: center;
+      color: #333;
+      padding: 10px 15px;
+      cursor: pointer;
+      @include mq(ls) {
+        padding: 18px 15px;
+      }
+    }
+    &List {
+      background: rgb(252, 228, 235);
+      border: 1px solid #fff;
+      border-top: none;
+      text-align: center;
+      text-decoration: none;
+      a {
+        padding: 10px 15px;
+        text-decoration: none;
+        display: block;
+        color: #333;
+        &:hover {
+          background: rgb(250, 34, 124);
+          transition: 0.3s;
+          color: #fff;
+        }
+      }
+    }
+    ul {
+      list-style: none;
+    }
+  }
+  //カテゴリー
+  &_cat {
+    margin-bottom: 24px;
+    ul {
+      list-style: none;
+      li {
+        border: 1px solid #fff;
+        background: rgb(252, 228, 235);
+        text-align: center;
+        margin-bottom: 5px;
+        a {
+          padding: 10px 15px;
+          text-decoration: none;
+          color: #333;
+          display: block;
+          box-sizing: border-box;
+          &:hover {
+            background: rgb(250, 34, 124);
+            transition: 0.3s;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}
+//===========================================================
+//BEMで書いたVer
+//===========================================================
+.sidebar__item {
+  list-style: none;
+  width: 100%;
+}
+.sidebar__list {
+  border: 1px #ddd solid;
+  padding: 10px 10px;
+  margin-bottom: 14px;
+  background: rgba(248, 218, 252, 0.5);
+  transition: .3s;
+  &:hover{
+    transition: .3s;
+    opacity: .7;
+  }
+}
+.sidebar__link {
+  color: #333;
+  text-decoration: none;
+}
+.sidebar__text {
+  color: #333;
+  font-size: 14px;
+  @include mq(ls) {
+    font-size: 22px;
+  }
+  @include mq() {
+    font-size: 16px;
+  }
+}
+.sidebar__metaItem {
+  list-style: none;
+  width: 100%;
+}
+.sidebar__metaList {
+  display: inline-block;
+  color: #333;
+  font-size: 12px;
+  padding: 16px 10px;
+  @include mq(ls) {
+    font-size: 24px;
+  }
+  @include mq() {
+    font-size: 16px;
+    padding: 7px 10px;
+  }
+}
+.sidebar__icon {
+  display: inline;
+  vertical-align: sub;
+  width: 16px;
+  &--search {
+    vertical-align: baseline;
+  }
+  &--card {
+    vertical-align: baseline;
+  }
+}
+.sidebar__search {
+  width: 100%;
+  height: 45px;
+  border-radius: 20px;
+  background: #fff;
+  position: relative;
+  z-index: 10;
+  @include mq(ls) {
+    width: 90%;
+    margin: 24px auto;
+  }
+  @include mq(md) {
+    width: 80%;
+    margin: 24px auto;
+  }
+}
+.sidebar__form {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  background: #fff;
+  padding: 10px 8px 10px 14px;
+}
+
+.submit-search {
+  background: none;
+  border: none;
+  position: absolute;
+  right: 12px;
+  top: 13px;
+  cursor: pointer;
+  img{
+    width: 20px;
+  }
+}
+
+.input-search {
+  width: 100%;
+  border: none;
+  height: 45px;
+  border-radius: 20px;
+  outline: none;
+  font-size: 16px;
+  padding-left: 8px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#searchform {
+  position: relative;
+}
+
+
+.arrow_bottom {
+  padding-top: 4px;
+  width: 16px;
+  vertical-align: bottom;
+  float: right;
+  transition: 0.3s;
+}
+
+.clear{
+  clear: both;
+}

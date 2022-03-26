@@ -1,0 +1,1021 @@
+/*
+Theme Name: SWEEET
+Author: Chaki Ryou
+Version: 1.0
+License: GNU General Public License v2 or later
+*/
+
+
+
+$breakpoints: (
+  "sp": "screen and (max-width: 590px)",
+  "md": "screen and (min-width:591px) and (max-width: 768px)",
+  "ls": "screen and (max-width: 1024px)",
+  "xl": "screen and (max-width: 1400px)",
+) !default;
+//@mixinは関数みたいなものを作れる
+
+@mixin mq($breakpoint: sp) {
+  @media #{map-get($breakpoints,$breakpoint)} {
+    @content;
+  }
+}
+
+@import "base";
+@import "single";
+@import "contact";
+@import "sidebar";
+@import "search";
+@import "404";
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+//===========================================================
+//ヘッダー
+//===========================================================
+.header {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: $btn-color;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 18;
+  transition: .5s;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: topdown 2s ease-in alternate infinite;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  @include mq(ls){
+    width: 120px;
+    height: 120px;
+    right: 60px;
+  }
+  @include mq(){
+    width: 60px;
+    height: 60px;
+    right: 20px;
+  }
+  &.wide {
+    top: 0;
+    right: 0;
+    border-radius: 0%;
+    width: 100vw;
+    height: 100vh;
+    transition: 1s;
+    animation: none;
+  }
+  ul {
+    display: none;
+    list-style: none;
+    height: auto;
+    transform: rotate(60deg);
+    transition: 2s;
+    font-family: "Anton", sans-serif;
+    &.active {
+      transition: 2s;
+      transform: rotate(0deg);
+    }
+
+      li {
+        list-style: none;
+        line-height: 4rem;
+        letter-spacing: 0.7em;
+        font-size: 24px;
+        transition: .3s;
+        position: relative;
+        &::after{
+          position: absolute;
+          content: '';
+          bottom: 0;
+          left: 0;
+          height: 2px;
+          width: 0;
+          transition: .3s;
+          background: #333;
+        }
+        &:hover::after{
+          transition: .3s;
+          width: 100%;
+        }
+      a {
+        text-decoration: none;
+        color: #333;
+        }
+      }
+  }
+}
+
+.menu {
+  display: block;
+  text-align: center;
+  @include mq(){
+    font-size: 10px;
+  }
+}
+
+.close {
+  display: none;
+  @include mq(){
+    font-size: 10px;
+    text-align: center;
+  }
+}
+.bar {
+  width: 60px;
+  height: 60px;
+  position: fixed;
+  z-index: 19;
+  top: 50px;
+  right: 55px;
+  cursor: pointer;
+  animation: topdown 2s ease-in alternate infinite;
+  @include mq(ls){
+    right: 90px;
+    top: 40px;
+  }
+  @include mq(){
+    width: 35px;
+    height: 35px;
+    right: 32px;
+    top: 20px;
+  }
+  &.active {
+    animation: none;
+  }
+  &-top {
+    position: absolute;
+    background: #fff;
+    top: 30px;
+    width: 100%;
+    height: 2px;
+    transition: 0.3s;
+    @include mq(){
+      top: 18px;
+    }
+    &.active {
+      transform: rotate(405deg);
+      transition: 0.6s;
+      right: 0;
+      top: 50px;
+      @include mq(){
+        top: 41px;
+      }
+    }
+  }
+  &-bottom {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    height: 2px;
+    background: #fff;
+    transition: 0.6s;
+    &.active {
+      transform: rotate(-405deg);
+      transition: 0.6s;
+      bottom: 8px;
+      right: 0;
+      @include mq(){
+        bottom: -7px;
+      }
+    }
+  }
+}
+
+//===========================================================
+//===========================================================
+
+//＝＝＝＝＝＝＝＝＝＝＝フェードスライダー＝＝＝＝＝＝＝＝＝＝＝
+.fadeslider {
+  width: 100%;
+  height: 850px;
+  overflow: hidden;
+  position: relative;
+  @include mq(ls){
+    height: 700px;
+  }
+  @include mq(md){
+    height: 515px;
+  }
+  @include mq(){
+    height: 250px;
+  }
+  img {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+.store-title {
+  position: absolute;
+  z-index: 5;
+  width: 100%;
+  text-align: center;
+  bottom: 130px;
+  left: 50%;
+  transform: translate(-50%);
+  letter-spacing: 1em;
+  color: #fff;
+  font-size: 48px;
+  font-family: "Anton", sans-serif;
+  @include mq(){
+    bottom: 10px;
+    font-size: 40px;
+  }
+  &__middle {
+    top: 840px;
+    height: 200px;
+    @include mq(){
+      height: 150px;
+    }
+  }
+}
+//＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+
+//===========================================================
+//===========================================================
+//main
+.main {
+  width: 90%;
+  height: 1500px;
+  margin: 60px auto 0 auto;
+  background: rgb(240, 238, 238);
+  position: relative;
+  @include mq(){
+    height: 1600px;
+  }
+  &-topImg {
+    width: 100%;
+    height: 360px;
+    overflow: hidden;
+    background: #fff;
+    background-attachment: fixed;
+    background-size: 100%;
+    background-position: center;
+    position: relative;
+    background-repeat: no-repeat;
+    z-index: 1;
+    @include mq(){
+      height: 230px;
+
+    }
+  }
+ 
+  &-inner {
+    width: 70%;
+    height: 480px;
+    background: #fff;
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    top: 280px;
+    @include mq(){
+      width: 100%;
+      height: 350px;
+      position: static;
+    }
+    &__title {
+      font-family: "Anton", sans-serif;
+      letter-spacing: 0.7em;
+      width: 100%;
+      text-align: center;
+      color: $font-color;
+      line-height: 3rem;
+    }
+    &__apeal {
+      font-family: $font-family;
+      width: 100%;
+      text-align: center;
+      color: $font-color;
+      line-height: 3rem;
+      margin-bottom: 30px;
+    }
+    &__text {
+      font-family: $font-family;
+      width: 100%;
+      text-align: center;
+      color: $font-color;
+      line-height: 5rem;
+      @include mq(){
+        line-height: 3rem;
+      }
+    }
+  }
+  &-bottomImg {
+    width: 35%;
+    height: 520px;
+    box-shadow: 20px 20px 60px 0px rgba(0, 0, 0, 0.5);
+    background: $bc-color;
+    position: absolute;
+    z-index: 2;
+    overflow: hidden;
+    left: 0;
+    top: 480px;
+    background-size: cover;
+    video{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    @include mq(md){
+      height: 363px;
+    }
+    @include mq(){
+      width: 50%;
+      height: 254px;
+      position: static;
+    }
+    img{
+      width: 100%;
+    }
+  }
+  &-rightbc {
+    background: rgb(218, 215, 215);
+    width: 50%;
+    float: right;
+    z-index: 0;
+    height: calc(100% - 360px);
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    video{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    @include mq(){
+      display: block;
+      float: none;
+      position: absolute;
+      right: 0;
+      bottom: 0px;
+      height: calc(100% - 700px);
+    }
+    &_img {
+      width: 60%;
+      height: 440px;
+      margin-top: 50px;
+      background: #333;
+      overflow: hidden;
+      @include mq(md){
+        height: 311px;
+        margin-top: 60px;
+      }
+      @include mq(){
+        height: auto;
+        width: 100%;
+        margin-top: 0;
+      }
+      img{
+        width: 100%;
+      }
+    }
+  }
+  &-bottom {
+    position: absolute;
+    top: 980px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    height: auto;
+    
+  }
+  &-video{
+    width: 250px;
+    height: 60px;
+    position: absolute;
+    left: 15px;
+    bottom: 10px;
+    @include mq(md){
+      bottom: 20px;
+    }
+    @include mq(){
+      bottom: 0;
+    }
+    video{
+      width: 100%;
+    }
+  }
+}
+
+//===========================================================
+//商品紹介
+//===========================================================
+
+.p-kv__img {
+  width: 100%;
+  height: 340px;
+  overflow: hidden;
+  position: relative;
+  @include mq(){
+    height: 240px;
+  }
+
+  img {
+    width: 100%;
+    @include mq(){
+      width: -webkit-fill-available;
+      height: 100%;
+    }
+  }
+}
+
+
+.product {
+  width: 90%;
+  margin: 48px auto 0 auto;
+  height: auto;
+  @include mq(md){
+    margin: 64px auto 0 auto;
+  }
+  @include mq(){
+    margin: 88px auto 0 auto;
+    
+  }
+  &-title {
+    position: relative;
+    left: 0;
+    bottom: 0;
+    letter-spacing: 0.6rem;
+    color: $font-color;
+    margin-bottom: 16px;
+    transform: translateY(72px);
+    transition: 0.4s;
+    &.active {
+      transform: translateY(0);
+      transition: 0.8s;
+    }
+  }
+  &-mainimg {
+    margin: auto;
+    width: 100%;
+    height: 360px;
+    overflow: hidden;
+    background-attachment: fixed;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: top;
+    @include mq(){
+     height: 230px;
+    }
+  }
+  &-table {
+    width: 100%;
+    margin-top: 56px;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  //パネルの中身
+  &-panel {
+    width: 33%;
+    height: auto;
+    padding: 10px;
+    background: rgb(218, 215, 215);
+    margin-bottom: 20px;
+    margin-right: auto;
+    position: relative;
+    @include mq(md){
+      width: 48%;
+      margin: 16px auto;
+    }
+    @include mq(){
+      width: 100%;
+      margin: 16px auto;
+    }
+    &__img {
+      width: 95%;
+      height: 280px;
+      border-radius: 8px;
+      overflow: hidden;
+      margin: auto;
+      transition: 1s;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        background-size: 100%;
+        border-radius: 8px;
+      }
+    }
+    &__title {
+      font-family: $font-family;
+      width: 100%;
+      text-align: center;
+      color: $font-color;
+      line-height: 3rem;
+    }
+    &__text {
+      font-family: $font-family;
+      width: 100%;
+      text-align: center;
+      color: $font-color;
+      line-height: 2rem;
+    }
+  }
+}
+
+//===========================================================
+//店舗紹介
+//===========================================================
+.map {
+  width: 90%;
+  height: auto;
+  margin: 56px auto 0 auto;
+  &-title {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    color: $font-color;
+    margin-bottom: 16px;
+    letter-spacing: 0.6rem;
+    transform: translateY(72px);
+    transition: 0.4s;
+    &.active {
+      transform: translateY(0);
+      transition: 0.8s;
+    }
+  }
+  &-sukejule {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    height: auto;
+    @include mq(){
+      flex-wrap: wrap;
+    }
+    &__map {
+      width: 48%;
+      height: 450px;
+      background: rgb(218, 215, 215);
+      position: relative;
+      margin-top: 12px;
+      img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      @include mq(){
+        width: 100%;
+      }
+      iframe {
+        width: 100%;
+      }
+      h3 {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        width: 100%;
+        font-family: $font-family;
+        color: $font-color;
+        background: rgb(243, 241, 241);
+      }
+      a {
+        position: absolute;
+        width: 100%;
+        display: block;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgb(243, 241, 241);
+      }
+    }
+    &__title {
+      width: 60%;
+      text-align: center;
+      font-family: $font-family;
+      letter-spacing: 0.1em;
+      line-height: 3rem;
+      color: $font-color;
+      margin: 0 auto 20px auto;
+      font-size: 24px;
+      background: $bc-color;
+      @include mq(){
+        width: 100%;
+      }
+    }
+    &__graph {
+      width: 48%;
+      @include mq(){
+        margin-top: 15px;
+        width: 100%;
+      }
+    }
+    &__table {
+      width: 100%;
+      tr th {
+        width: 30%;
+        text-align: center;
+        background: $bc-color;
+        padding: 15px 5px;
+        letter-spacing: 0.2rem;
+        span {
+          font-size: 12px;
+        }
+      }
+      tr td {
+        width: 70%;
+        padding: 15px 5px;
+        border-bottom: 1px rgb(218, 215, 215) solid;
+      }
+    }
+  }
+}
+//===========================================================
+//NEWS
+//===========================================================
+.date{
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+}
+.news {
+  width: 90%;
+  height: auto;
+  margin: 56px auto 56px auto;
+  position: relative;
+  @include mq(){
+    width: 100%;
+  }
+  
+  &-title {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    color: $font-color;
+    margin-bottom: 16px;
+    letter-spacing: 0.6rem;
+    transform: translateY(72px);
+    transition: 0.4s;
+    @include mq(){
+      margin-top: 24px;
+    }
+    &.active {
+      transform: translateY(0);
+      transition: 0.8s;
+    }
+  }
+  &-area {
+    width: 100%;
+    height: 100%;
+    padding: 20px 10px;
+    background: rgb(240, 238, 238);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    a {
+      text-decoration: none;
+      width: 46%;
+      height: 200px;
+      display: block;
+      margin-bottom: 20px;
+      color: #333;
+      @include mq(){
+        width: 100%;
+        margin-bottom: 16px;
+      }
+    }
+  }
+  &-box {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    background: #fff;
+    margin-bottom: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    &__leftImg {
+      width: 50%;
+      height: 100%;
+      overflow: hidden;
+      background: #333;
+      background-position: center;
+      background-size: cover;
+      transition: 0.6s;
+      &.scale {
+        transform: scale(1.2);
+        transition: 0.6s;
+      }
+    }
+    &__text {
+      width: 50%;
+      height: 100%;
+      background: #fff;
+      position: relative;
+      z-index: 6;
+      padding: 5px;
+      transition: 0.6s;
+    
+
+      p {
+        font-family: $font-family;
+        color: #333;
+        letter-spacing: 0.2em;
+        line-height: 2rem;
+        transition: 0.6s;
+      }
+      .news-date {
+        font-size: 12px;
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        font-family: $font-family;
+        color: #333;
+        letter-spacing: 0.2em;
+        line-height: 2rem;
+        transition: 0.6s;
+      }
+    }
+  }
+  &-svg {
+    width: 128px;
+    height: 200px;
+    color: #fff;
+    position: absolute;
+    left: -8em;
+    bottom: 0;
+    z-index: 5;
+    transition: 0.6s;
+    @include mq(ls){
+      width: 130px;
+    }
+    
+  }
+  &-list {
+    color: #333;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 50px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -40px;
+    background: #fff;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: .3s;
+    @include mq(){
+      position: relative;
+      bottom: 0;
+    }
+    &::before {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: -1;
+      content: "";
+      background: rgb(247, 119, 158);
+      transform-origin: center center;
+      transform: scale(0, 1);
+      transition: transform 0.3s;
+    }
+    &:hover::before{
+      transform: scale(1, 1);
+      transition: .3s;
+    }
+    &:hover{
+      color: #fff;
+      transition: .3s;
+
+    }
+  }
+}
+svg {
+  position: absolute;
+  width: 100%;
+  height: 200px;
+  fill: currentColor;
+}
+
+path {
+  position: absolute;
+  background: #fff;
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
+
+.detail-arrow {
+  font-family: $font-family;
+  color: #333;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  padding-top: 11px;
+  border: 1px #fff solid;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 15px;
+  right: 25px;
+  font-size: 14px;
+  opacity: 0;
+  transition: 0.4s;
+  &.active {
+    opacity: 1;
+    transform: translateX(5px) scale(1.2);
+    transition: 0.5s;
+  }
+}
+//===========================================================
+//フッター
+//===========================================================
+
+.footer {
+  width: 100%;
+  height: 80px;
+  background: rgb(37, 37, 37);
+  padding: 0 15px;
+  display: flex;
+  justify-content: space-around;
+  @include mq(){
+    display: none;
+  }
+  ul {
+    margin: auto;
+    width: 80%;
+    height: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    @include mq(){
+      width: 130px;
+      display: block;
+      text-align: center;
+    }
+    li {
+      padding: 4px 6px;
+      line-height: 3rem;
+      margin-right: 25px;
+      transition: .2s;
+
+      @include mq(){
+        padding: 0;
+        line-height: 2rem;
+      }
+      &:hover {
+        opacity: .7;
+        transition: .2s;
+      }
+    a {
+      display: inline-block;
+      text-decoration: none;
+      color: #fff;
+      img{
+        width: 30px;
+      }
+      }
+    }
+  }
+}
+.sns-icon{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+}
+
+//===========================================================
+//スマホ用フッター
+//===========================================================
+.sp-footer {
+  display: none;
+  width: 100%;
+  height: 50px;
+  background: #333;
+  position: fixed;
+  bottom: 0;
+  z-index: 100;
+  @include mq(){
+    display: block;
+  }
+  &--list {
+    display: flex;
+  }
+  &--item {
+    width: 25%;
+    display: inline-block;
+    list-style: none;
+    a{
+      text-decoration: none;
+      color: #fff;
+    }
+    
+    &__tell {
+      display: flex;
+      justify-content: center;
+      padding-top: 2px;
+      box-sizing: border-box;
+      &-link {
+        padding-top: 10px;
+        text-decoration: none;
+        color: #fff;
+        display: block;
+        height: 50px;
+      }
+      border-right: 1px solid #fff;
+    }
+    &__sns {
+      border-right: 1px solid #fff;
+      text-align: center;
+      color: #fff;
+      padding-top: 12px;
+      &Open{
+        display: block;
+      }
+      &Close{
+        display: none;
+      }
+      img {
+        width: 20px;
+      }
+    }
+    &__blog {
+      color: #fff;
+      border-right: 1px solid #fff;
+      display: flex;
+      justify-content: center;
+      padding-top: 12px;
+    }
+    &__top {
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+.sns-area {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: none;
+  position: fixed;
+  bottom: 50px;
+  z-index: 100;
+  ul {
+    list-style: none;
+    text-align: center;
+    li {
+      display: inline-block;
+      padding: 10px 20px;
+      img {
+        width: 20px;
+      }
+    }
+  }
+}
+
+
+
+
+//NEWS
+.blog-news{
+  width: 70%;
+  float: left;
+  &-area{
+    justify-content: flex-start;
+  }
+  @include mq(md){
+    width: 100%;
+    float: none;
+    padding-top: 64px;
+  }
+  @include mq(){
+    
+    width: 100%;
+    float: none;
+    margin-top: 40px;
+    margin-bottom: 0;
+  }
+}
+.clear{
+  clear: both;
+}
+
+.date{
+  position: static;
+}

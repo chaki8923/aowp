@@ -1,0 +1,478 @@
+$breakpoints :(
+  'sp': 'screen and (max-width: 590px)',
+  'md': 'screen and (max-width: 785px)',
+  'ls': 'screen and (max-width: 1024px)',
+  'ys': '(orientation: landscape) and (max-width: 767px)',
+)!default;
+
+
+@mixin mq($breakpoint: sp){
+  @media #{map-get($breakpoints,$breakpoint)}{
+
+    @content;
+  }
+}
+
+//=================================================
+//カラー
+$base-color: rgb(153,155,132);
+$font-color: #926E6F;
+$bc-color: #CA8A8B;
+$btn-color: #E6C4C0;
+$section-bc: rgba(216, 223, 215, 0.5);
+//====================================================
+//フォントファミリー
+$font-family: "Times New Roman", "游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN","HG明朝E", "メイリオ", Meiryo, serif;
+
+
+//===================================================
+//SECTIONタイトル
+.title{
+  font-size: 3rem;
+  width: fit-content;
+  margin: auto;
+  text-align: center;
+  color: $font-color;
+  font-family: "Times New Roman", "游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN","HG明朝E", "メイリオ", Meiryo, serif;
+  font-weight: normal;
+  border-bottom: 2px $base-color solid;
+  @include mq(){
+    font-size: 2rem;
+  }
+}
+
+.clear{
+  clear: both;
+}
+.logo-link{
+  position: fixed;
+  top: 15px;
+  left: 10px;
+  width: 150px;
+  z-index: 20;
+  img{
+    width: 100%;
+  }
+  @include mq(ls){
+    position: absolute;
+    top: auto;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+.size-l{
+  width: 600px;
+  span{
+    width: 100%;
+    display: block;
+  }
+  @include mq(){
+    width: 100%;
+    font-size: 24px;
+  }
+}
+
+.row-title{
+  width: 100%;
+  text-align: center;
+  margin-top: 15px;
+  color: $font-color;
+  font-family: "Times New Roman", "游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN","HG明朝E", "メイリオ", Meiryo, serif;
+  font-size: 2rem;
+
+
+}
+
+//===================================================
+//TOPへ戻るぼたん
+.top-return{
+  position: fixed;
+  bottom: 0px;
+  right: 5px;
+  width: 70px;
+  height: 70px;
+  background: $base-color;
+  color: #fff;
+  cursor: pointer;
+  z-index: 150;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: .4s;
+  opacity: 0;
+  &.fadein{
+    opacity: 1;
+    transition: .4s;
+  }
+  &.bottom{
+    padding: 0;
+    bottom: 60px;
+    transition: .4s;
+  }
+ 
+}
+//===================================================
+//レスポンシブバー
+//===================================================
+.bar{
+  display: none;
+  width: 60px;
+  height: 60px;
+  position: fixed;
+  z-index: 20;
+  right: 40px;
+  top: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  @include mq(ls){
+    display: block;
+  }
+
+    &-top{
+      width: 80%;
+      height: 5px;
+      background: #000;
+      position: absolute;
+      top: 11px;
+      left: 50%;
+      transform: translateX(-50%);
+      transition: .6s;
+     
+      &.active{
+        transform: rotate(405deg);
+        transition: .6s;
+        top: 30px;
+        left: 6px;
+      
+      }
+    }
+    &-middle{
+      width: 80%;
+      height: 5px;
+      background: #000;
+      position: absolute;
+      top: 28px;
+      transition: .6s;
+      left: 50%;
+      transform: translateX(-50%);
+   
+      &.active{
+        opacity: 0;
+        transition: .2s;
+        background: #fff;
+      }
+    }
+    &-bottom{
+      width: 80%;
+      height: 5px;
+      background: #000;
+      position: absolute;
+      bottom: 11px;
+      transition: .6s;
+      left: 50%;
+      transform: translateX(-50%);
+   
+      &.active{
+        transform: rotate(-405deg);
+        transition: .6s;
+        bottom: 26px;
+        left: 5px;
+       
+      }
+    }
+}
+//===================================================
+//レスポンシブスライドメニュー
+.rs-menu{
+  display: none;
+  position: absolute;
+  z-index: 6;
+  top: 80px;
+  left: 0;
+  width: 100%;
+  height: 520px;
+  overflow: hidden;
+  @include mq(ls){
+    display: block;
+  }
+  @include mq(md){
+    display: block;
+    height: 420px;
+  }
+
+  @include mq(){
+    display: block;
+    height: 263px;
+  }
+}
+
+.responsive-menu{
+  display: none;
+  @include mq(ls){
+    display: block;
+    position: absolute;
+    z-index: 6;
+    top: 0;
+    right: 0;
+    transform: translateX(100%);
+    width: 50%;
+    height: 720px;
+    background: rgba(0,0,0,.6);
+    transition: .4s;
+    @include mq(){
+      width: 80%;
+    }
+  }
+
+  ul{
+    list-style: none;
+    width: 50%;
+    margin: 30px auto 0 auto;
+    
+    @include mq(){
+      margin: 15px auto 0 auto;
+    }
+    a{
+      text-decoration: none;
+      color: #fff;
+      li{
+        line-height: 4rem;
+        font-size: 32px;
+        @include mq(){
+          line-height: 3rem;
+          font-size: 24px;
+        }
+      }
+    }
+  }
+  &.active{
+    transform: translateX(-0%);
+    transition: .5s;
+  }
+}
+//===================================================
+//インナー
+//===================================================
+.inner{
+  margin: 0 auto;
+  padding: 40px 20px 20px 20px;
+  min-height: 560px;
+  height: auto;
+  max-width: 1240px;
+  @include mq(ls){
+
+    min-height: 860px;
+    padding: 16px 10px 10px 10px;
+  }
+  @include mq(){
+    min-height: 0;
+    padding: 16px 10px 10px 10px;
+  }
+}
+
+@media (orientation: landscape) and (max-width: 767px){
+  .inner{
+    min-height: 0;
+  }
+  }
+//===================================================
+
+//===========================================================
+//ページネーション
+//===========================================================
+.pagenation {
+  position: relative;
+  width: 100%;
+  margin: 40px auto;
+  @include mq(ls) {
+    width: 90%;
+  }
+  @include mq(md) {
+    
+  }
+  @include mq() {
+    // position: absolute;
+    // bottom: -100px;
+  }
+  ul {
+    list-style: none;
+    li {
+      margin-right: 10px;
+      background: #333;
+      display: inline-block;
+      &.active{
+        transition: 0.3s;
+        background: rgb(1, 71, 17);
+        color: #fff;
+
+        padding: 10px 15px;
+      }
+      a {
+        padding: 10px 15px;
+        display: block;
+        width: 100%;
+        height: 100%;
+        color: #fff;
+        text-decoration: none;
+        transition: 0.3s;
+       
+        
+        &:hover {
+          transition: 0.3s;
+          background: rgb(1, 71, 17);
+          transition: 0.3s;
+          background: rgb(1, 71, 17);
+        }
+      }
+    }
+  }
+ 
+}
+
+
+
+//SNSシェアエリア
+.share-area {
+  width: 100%;
+  text-align: center;
+  padding: 12px 10px;
+  color: #333;
+  p{
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  ul {
+    list-style: none;
+    li {
+      display: inline-block;
+      position: relative;
+
+      a {
+        text-decoration: none;
+        color: #fff;
+        font-size: 30px;
+        padding: 0 16px;
+        width: 150px;
+        text-align: center;
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 12px;
+        transition: .3s;
+        &:hover{
+          opacity: .7;
+          transition: .3s;
+        }
+        span {
+          font-size: 16px;
+          display: inline-block;
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+}
+
+.fasebook {
+  background: royalblue;
+}
+
+.tweet {
+  background: rgb(78, 165, 228);
+}
+.line {
+  background: rgb(30, 195, 0);
+}
+
+.pocket {
+  background: rgb(238, 64, 86);
+}
+.hatena {
+  background: rgb(43,111,189);
+  &::before {
+    content: "B!";
+    font-family: Verdana;
+    font-weight: bold;
+    font-size: 25px;
+  }
+}
+
+
+//ローディング
+.loading{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background:#0dc5c1;
+  z-index: 100;
+}
+.loader {
+  font-size: 10px;
+  position: absolute;
+  left: 45%;
+  top: 40%;
+  transform: translateX(-50%);
+  text-indent: -9999em;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #ffffff;
+  background: -moz-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+  background: -webkit-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+  background: -o-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+  background: -ms-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+  background: linear-gradient(to right, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+  -webkit-animation: load3 1.4s infinite linear;
+  animation: load3 1.4s infinite linear;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  span{
+    position: absolute;
+    width: 75%;
+    height: 75%;
+    border-radius: 50%;
+    content: '';
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+  
+}
+.loader:before {
+  width: 50%;
+  height: 50%;
+  background: #ffffff;
+  border-radius: 100% 0 0 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: '';
+}
+
+@-webkit-keyframes load3 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes load3 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}

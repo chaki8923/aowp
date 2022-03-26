@@ -1,0 +1,292 @@
+.single-container {
+  float: left;
+  width: 75%;
+  padding: 0 24px;
+  @include mq(md){
+    float: none;
+    width: 100%;
+    margin: auto;
+  }
+  @include mq(sp){
+    width: 100%;
+    padding: 0 8px;
+  }
+}
+
+.back-view{
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  position: fixed;
+  background-repeat: no-repeat;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background: #ddd;
+}
+
+.single {
+  &-panel {
+    width: 100%;
+    &_img {
+      position: relative;
+      width: 100%;
+      height: 440px;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+  &-cat {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    background-color: rgb(240, 141, 11);
+    color: #fff;
+    line-height: 3rem;
+    padding: 6px 12px;
+  }
+  &-title {
+    display: flex;
+    width: 100%;
+    h2 {
+      text-align: center;
+      width: 100%;
+      padding: 8px 0;
+    }
+  }
+  &-date {
+    width: 3em;
+    height: auto;
+    padding: 8px;
+    text-align: center;
+    strong {
+      font-size: 24px;
+    }
+  }
+  &-content {
+    width: 100%;
+    height: auto;
+    padding: 24px 16px;
+    p {
+      line-height: 2rem;
+      letter-spacing: 1.2;
+    }
+  }
+}
+
+//関連記事
+.relation-post {
+  width: 100%;
+  height: auto;
+  margin-top: 24px;
+}
+.relation {
+  &-title {
+    width: 100%;
+    position: relative;
+    padding-left: 24px;
+    &::before {
+      content: "";
+      width: 10px;
+      height: 100%;
+      background-color: rgb(240, 141, 11);
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+  &-list {
+    width: 100%;
+    margin-top: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    @include mq(sp){
+      margin-bottom: 24px;
+    }
+  }
+  &-panel {
+    width: 33%;
+    height: 360px;
+    overflow: hidden;
+    display: block;
+    text-decoration: none;
+    color: #333;
+    border: 1px #ddd solid;
+    background: #ffff;
+    @include mq(sp){
+      width: 100%;
+    }
+    &_img {
+      width: 100%;
+      height: 280px;
+      overflow: hidden;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: .5s;
+        &.zoomup{
+          transition: .5s;
+          transform: scale(1.1);
+        }
+      }
+    }
+    &_text {
+      padding: 16px 10px;
+      text-align: center;
+      width: 100%;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      font-size: 18px;
+      
+    }
+  }
+}
+//プロフィールゾーン
+.abater-area{
+  width: 100%;
+  padding: 24px 16px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #333;
+  @include mq(sp){
+    flex-wrap: wrap;
+  }
+}
+
+.abater-img{
+  width: 20%;
+  text-align: center;
+  @include mq(sp){
+    width: 100%;
+  }
+  img{
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+  }
+}
+
+.abater-text_area{
+  padding-top: 32px;
+  width: 80%;
+  color: #ddd;
+  @include mq(sp){
+    width: 100%;
+  }
+}
+.abater-text_top{
+  padding: 0 16px;
+}
+
+.abater-name{
+  float: left;
+}
+
+.next-single{
+  float: right;
+  text-decoration: none;
+  color: #ddd;
+  position: relative;
+  transition: 3s;
+  &::after{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    content: '';
+    width: 0;
+    height: 1px;
+    background: #ddd;
+    transition: .3s;
+  }
+  &:hover::after{
+    width: 100%;
+    transition: .3s;
+  }
+}
+.abater-text{
+  margin-top: 24px;
+  padding: 12px 10px;
+}
+
+.abater-sns{
+  display: flex;
+  align-items: center;
+  li{
+    padding: 8px;
+    display: inline-block;
+    transition: .3s;
+    &:hover{
+      opacity: .7;
+      transition: .3s;
+    }
+    a{
+      img{
+        
+        width: 30px;
+      }
+    }
+  }
+}
+
+.abater-sns-icon{
+  width: 30px;
+  margin-right: 12px;
+}
+
+////////////////////////////ABOUT///////////////////////////////////////
+.about-container{
+  width: 100%;
+  padding: 24px 10px;
+  background: #ddd;
+  margin-top: 80px;
+  box-sizing: border-box;
+}
+.single-inner{
+  width: 80%;
+  background: #fff;
+  margin: auto;
+  @include mq(sp){
+    width: 100%;
+  }
+  &_content{
+    padding: 32px 10px;
+  }
+}
+.title{
+  font-family: $main-font;
+  text-align: center;
+  margin-top: 24px;
+  font-size: 24px;
+}
+.thumbnail{
+  width: 100%;
+  height: 420px;
+  img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+.history{
+  margin-top: 40px;
+  padding: 24px 32px;
+  @include mq(sp){
+    padding: 24px 5px;
+  }
+  h3{
+    margin-bottom: 20px;
+    border-left: 4px solid #ee3c00;
+    padding: 8px 0px 8px 20px;
+  }
+  &-content{
+    margin-bottom: 42px;
+  }
+}
+///////////////////////////////////////////////////////////////////

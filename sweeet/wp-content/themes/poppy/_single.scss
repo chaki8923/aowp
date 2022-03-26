@@ -1,0 +1,185 @@
+.store_name{
+  color: $font-color;
+  width: 100%;
+  text-align: center;
+  padding: 32px 0;
+  margin-top: 100px;
+}
+
+.title-area{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 250px;
+  margin-bottom: 100px;
+  @include mq(){
+    height: 150px;
+  }
+}
+
+.single-blog{
+  width: 80%;
+  margin: auto;
+  padding: 24px 10px;
+  font-family: $font-family;
+  background-color: rgb(237,234,231);
+  margin-bottom: 46px;
+  position: relative;
+
+
+  
+  iframe{
+    width: 100%;
+  }
+ @include mq(ls){
+   min-height: 740px;
+ }
+ @include mq(){
+   width: 100%;
+ }
+}
+
+.thumbnail{
+  width: 100%;
+  height: 350px;
+  box-shadow: 30px 50px 60px rgb(165, 160, 145);
+  overflow: hidden;
+  position: relative;
+  left: 0;
+  top: -150px;
+  img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+.single-content{
+  p{
+    line-height: 2em;
+  }
+  h2{
+    line-height: 2em;
+    position: relative;
+    padding-left: 12px;
+    @include mq(){
+      font-size: 21px;
+    }
+    &::before{
+      position: absolute;
+      content: '';
+      top: 50%;
+      transform: translateY(-50%);
+      left: 0;
+      bottom: 0;
+      background: rgb(247,119,158);
+      width: 8px;
+      height: 30px;
+     
+    }
+  }
+  h3{
+    line-height: 2em;
+    position: relative;
+    padding-left: 12px;
+    &::before{
+      position: absolute;
+      content: '';
+      top: 50%;
+      transform: translateY(-50%);
+      left: 0;
+      bottom: 0;
+      background: rgb(247,119,158);
+      width: 8px;
+      height: 25px;
+     
+    }
+  }
+}
+
+
+.pagenation {
+  position: relative;
+  width: 100%;
+  margin: 40px auto 10px 20px;
+  @include mq(ls) {
+    width: 90%;
+  }
+  @include mq(md) {
+    
+  }
+  @include mq() {
+    // position: absolute;
+    // bottom: -100px;
+  }
+  ul {
+    list-style: none;
+    li {
+      margin-right: 10px;
+      background: #b59da1;
+      display: inline-block;
+      &.active{
+        padding: 10px 15px;
+        transition: 0.3s;
+        background: rgb(207, 16, 74);
+        color: #fff;
+
+      }
+      a {
+        padding: 10px 15px;
+        display: block;
+        width: 100%;
+        height: 100%;
+        color: #fff;
+        text-decoration: none;
+        transition: 0.3s;
+        @include mq(ls) {
+          padding: 10px 15px;
+        }
+        
+        &:hover {
+          transition: 0.3s;
+          background: rgb(207, 16, 74);
+          transition: 0.3s;
+          background: rgb(207, 16, 74);
+        }
+      }
+    }
+  }
+}
+
+
+//ここのスタイルから
+.sher-area{
+  width: 100%;
+  margin-top: 44px;
+  text-align: center;
+  p{
+    text-align: center;
+    font-family: $font-family;
+  }
+  
+  ul{
+    background-color: rgba(253, 191, 228, 0.6);
+    list-style: none;
+    li{
+      display: inline-block;
+      padding: 10px 12px;
+      transition: .3s;
+      &:hover{
+        opacity: .7;
+        transition: .3s;
+      }
+      
+      a{
+        text-decoration: none;
+        img{
+          display: block;
+          width: 30px;
+          filter: grayscale(1);
+        }
+      }
+    }
+  }
+}
+

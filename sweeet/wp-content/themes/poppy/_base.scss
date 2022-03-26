@@ -1,0 +1,339 @@
+$font-family: "ヒラギノ明朝 ProN W3","Hiragino Mincho ProN","HG明朝E","ＭＳ Ｐ明朝","ＭＳ 明朝",serif;
+$font-family2: 'Anton', sans-serif;
+
+$bc-color: rgb(253, 239, 239);
+$btn-color: rgb(205, 187, 167);
+$font-color: rgb(113, 111, 129);
+
+//===========================================================
+//アニメーション
+//===========================================================
+@keyframes topdown{
+
+  0%{transform: translateY(0);}
+  50%{transform: translateY(-5px);}
+  100%{transform: translateY(0px);}
+
+}
+
+.title-cover{
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 72px;
+  overflow: hidden;
+}
+
+.svg{
+  width: 100vw;
+}
+
+//===========================================================
+//SNSicon
+//===========================================================
+.fab{
+  color: #fff;
+  margin-right: 15px;
+}
+
+.main-logo{
+  width: 200px;
+  position: fixed;
+  top: 10px;
+  left: 16px;
+  z-index: 200;
+  @include mq(){
+    width: 150px;
+  }
+  img{
+    width: 100%;
+  }
+}
+
+
+.loading {
+  height: 100vh;
+  width: 100vw;
+  background: #EA4961;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top:0;
+  left: 0;
+  z-index: 300;
+
+}
+
+.loader {
+  
+  position: relative;
+  width: 75px;
+  height: 100px;
+  
+  &__bar {
+    position: absolute;
+    bottom: 0;
+    width: 10px;
+    height: 50%;
+    background: #fff;
+    transform-origin: center bottom;
+    box-shadow: 1px 1px 0 rgba(0,0,0,.2);
+    
+    @for $i from 1 through 5 { 
+       &:nth-child(#{$i}) {
+         left: ($i - 1) * 15px;
+         transform: scale(1,$i*.2);
+         animation: barUp#{$i} 4s infinite;
+        }
+    }
+    
+  }
+  
+  &__ball {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    border-radius: 50%;
+    animation: ball 4s infinite;
+  }
+}
+
+@keyframes ball {
+  0% {
+    transform: translate(0, 0);
+  }
+  5% {
+    transform: translate(8px, -14px);
+  }
+  10% {
+    transform: translate(15px, -10px)
+  }
+  17% {
+    transform: translate(23px, -24px)
+  }
+  20% {
+    transform: translate(30px, -20px)
+  }
+  27% {
+    transform: translate(38px, -34px)
+  }
+  30% {
+    transform: translate(45px, -30px)
+  }
+  37% {
+    transform: translate(53px, -44px)
+  }
+  40% {
+    transform: translate(60px, -40px)
+  }
+  50% {
+    transform: translate(60px, 0)
+  }
+  57% {
+    transform: translate(53px, -14px)
+  }
+  60% {
+    transform: translate(45px, -10px)
+  }
+  67% {
+    transform: translate(37px, -24px)
+  }
+  70% {
+    transform: translate(30px, -20px)
+  }
+  77% {
+    transform: translate(22px, -34px)
+  }
+  80% {
+    transform: translate(15px, -30px)
+  }
+  87% {
+    transform: translate(7px, -44px)
+  }
+  90% {
+    transform: translate(0, -40px)
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes barUp1 { 
+  0% {
+    transform: scale(1, .2);
+  }
+  40%{
+    transform: scale(1, .2);
+  }
+  50% {
+    transform: scale(1, 1);
+  }
+  90% {
+    transform: scale(1,1);
+  }
+  100% {
+    transform: scale(1,.2);
+  }
+}
+@keyframes barUp2 { 
+  0% {
+    transform: scale(1, .4);
+  }
+  40% {
+    transform: scale(1, .4);
+  }
+  50% {
+    transform: scale(1, .8);
+  }
+  90% {
+    transform: scale(1, .8);
+  }
+  100% {
+    transform: scale(1, .4);
+  }
+}
+@keyframes barUp3 { 
+  0% {
+    transform: scale(1, .6);
+  }
+  100% {
+    transform: scale(1, .6);
+  }
+}
+@keyframes barUp4 { 
+  0% {
+    transform: scale(1, .8);
+  }
+  40% {
+    transform: scale(1, .8);
+  }
+  50% {
+    transform: scale(1, .4);
+  }
+  90% {
+    transform: scale(1, .4);
+  }
+  100% {
+    transform: scale(1, .8);
+  }
+}
+@keyframes barUp5 { 
+  0% {
+    transform: scale(1, 1);
+  }
+  40% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1, .2);
+  }
+  90% {
+    transform: scale(1, .2);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+
+  .badge {
+    position: absolute;
+    top: -20px;
+    right: -10px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+    transform: rotate(15deg);
+    z-index: 5;
+  }
+  .new {
+    color: rgb(243, 248, 227);
+    background: #ed213a; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #93291e, #ed213a); /* Chrome 10-25, Safari 5.1-6 */
+  }
+  .popu {
+    color: rgb(41, 40, 40);
+    background: #ee9ca7; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #ffdde1, #ee9ca7); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+      to right,
+      #ffdde1,
+      #ee9ca7
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
+
+//SNSシェアエリア
+.share-area {
+  width: 100%;
+  text-align: center;
+  padding: 12px 10px;
+  color: #333;
+  p{
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  ul {
+    list-style: none;
+    li {
+      display: inline-block;
+      position: relative;
+
+      a {
+        text-decoration: none;
+        color: #fff;
+        font-size: 30px;
+        padding: 0 16px;
+        width: 150px;
+        text-align: center;
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 12px;
+        transition: .3s;
+        &:hover{
+          opacity: .7;
+          transition: .3s;
+        }
+        span {
+          font-size: 16px;
+          display: inline-block;
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+}
+
+.fasebook {
+  background: royalblue;
+}
+
+.tweet {
+  background: rgb(78, 165, 228);
+}
+.line {
+  background: rgb(30, 195, 0);
+}
+
+.pocket {
+  background: rgb(238, 64, 86);
+}
+.hatena {
+  background: rgb(43,111,189);
+  &::before {
+    content: "B!";
+    font-family: Verdana;
+    font-weight: bold;
+    font-size: 25px;
+  }
+}
+

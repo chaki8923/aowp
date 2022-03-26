@@ -1,0 +1,999 @@
+/*
+Theme Name: Company
+Author: Chaki Ryou
+Version: 1.0
+License: GNU General Public License v2 or later
+*/
+
+@import "base";
+@import "single";
+@import "single-about";
+@import "single-news";
+@import "page";
+@import "404";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $font-family;
+}
+
+//================================================================
+//ヘッダー
+//================================================================
+.header-sp {
+  .header-menu {
+    ul {
+      flex-wrap: wrap;
+      li {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.header {
+  width: 100%;
+  height: 60px;
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  @include mq() {
+    top: 60px;
+  }
+  ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    width: 100%;
+    height: 100%;
+    @include mq() {
+      flex-wrap: wrap;
+    }
+    li {
+      line-height: 3rem;
+      font-family: $font-family;
+      margin-right: 20px;
+      padding: 5px 10px;
+      transition: 0.4s;
+      a {
+        text-decoration: none;
+        color: #fff;
+        &:hover {
+          color: rgb(223, 95, 9);
+          transition: 0.4s;
+        }
+      }
+    }
+  }
+}
+
+.header {
+  width: 100%;
+  height: 60px;
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.5);
+  @include mq(md) {
+    display: none;
+  }
+  &-sp {
+    width: 60%;
+    height: 600px;
+    background: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    right: 0;
+    transform: translateX(100%);
+    padding: 80px 0 0 10px;
+    transition: 0.4s;
+    .sp-header {
+      width: 100%;
+      height: auto;
+      padding: 30px 16px;
+      list-style: none;
+      li {
+        line-height: 3rem;
+        a {
+          text-decoration: none;
+          color: #fff;
+        }
+      }
+    }
+    &.active {
+      transition: 0.4s;
+      transform: translateX(0);
+    }
+  }
+}
+
+.header-menu {
+  ul {
+    list-style: none;
+    li {
+      padding: 16px 10px;
+      a {
+        text-decoration: none;
+        color: #fff;
+      }
+    }
+  }
+}
+
+//================================================================
+//メイン動画
+//================================================================
+.main {
+  width: 100%;
+  height: auto;
+  position: relative;
+  overflow: hidden;
+  &-catch {
+    width: 100%;
+    height: auto;
+    position: relative;
+    &__title {
+      opacity: 0.8;
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%);
+      bottom: 10%;
+      font-family: $font-family;
+      letter-spacing: 0.3em;
+      line-height: 6rem;
+      width: 100%;
+      text-align: center;
+      color: #fff;
+      font-size: 3em;
+      text-shadow: 0 0 15px $btn-color;
+      br {
+        display: block;
+      }
+      @include mq() {
+        bottom: 30%;
+        line-height: 2rem;
+        font-size: 16px;
+        br {
+          display: none;
+        }
+      }
+    }
+  }
+  &-movie {
+    width: 100%;
+    @include mq() {
+      height: 380px;
+    }
+  }
+}
+
+//================================================================
+//思い
+//================================================================
+
+//================================================================
+//アバウト
+//================================================================
+.about {
+  width: 100%;
+  height: auto;
+  margin-top: 60px;
+  overflow: hidden;
+  @include mq() {
+    margin-top: 0;
+  }
+  &-box {
+    width: 80%;
+    height: auto;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    &:nth-child(odd) {
+      .about-left {
+        .triangle {
+          position: absolute;
+          top: 200px;
+          left: -38px;
+          width: 40px;
+          height: 40px;
+          transform: rotate(180deg);
+          clip-path: polygon(0 0, 0% 100%, 100% 50%);
+          @include mq() {
+            top: auto;
+            bottom: -20px;
+            left: 50%;
+            transform: translate(-50%);
+            clip-path: polygon(0 0, 100% 0%, 50% 100%);
+          }
+        }
+      }
+      .about-right {
+        transform: translateX(100%);
+        transition: 0.3s;
+        opacity: 0;
+        &.slidein {
+          transform: translateX(0);
+          transition: 0.4s;
+          opacity: 1;
+        }
+      }
+    }
+    .about-right {
+      transform: translateX(-100%);
+      transition: 0.3s;
+      opacity: 0;
+      &.slidein {
+        transform: translateX(0);
+        transition: 0.4s;
+        opacity: 1;
+      }
+    }
+    .about-left {
+      .triangle {
+        position: absolute;
+        top: 200px;
+        right: -38px;
+        width: 40px;
+        height: 40px;
+        clip-path: polygon(0 0, 0% 100%, 100% 50%);
+        @include mq() {
+          top: auto;
+          bottom: -20px;
+          left: 50%;
+          transform: translate(-50%);
+          clip-path: polygon(0 0, 100% 0%, 50% 100%);
+        }
+      }
+    }
+
+    @include mq(md) {
+      width: 90%;
+    }
+    @include mq() {
+      width: 100%;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    &:nth-of-type(even) {
+      flex-direction: row-reverse;
+    }
+  }
+
+  //==================================================
+  //左右のBOX
+  //==================================================
+  &-left,
+  &-right {
+    width: 50%;
+    height: 410px;
+    position: relative;
+    font-family: $font-family;
+    background-position: center;
+    background-size: cover;
+    @include mq() {
+      width: 100%;
+    }
+    &__inner {
+      display: block;
+      text-decoration: none;
+      color: #fff;
+      margin-top: 40px;
+      width: 100%;
+      height: 220px;
+      @include mq() {
+        height: 190px;
+      }
+    }
+
+    //==================================================
+    //boxのタイトル
+    //==================================================
+    &__title {
+      width: 100%;
+      text-align: center;
+      line-height: 3rem;
+      position: relative;
+      z-index: 3;
+      &sub {
+        display: block;
+        width: 40%;
+        text-align: center;
+        margin: 16px auto 0 auto;
+        position: relative;
+        z-index: 3;
+        @include mq() {
+          width: 90%;
+        }
+        &::before {
+          content: "";
+          background: #fff;
+          position: absolute;
+          bottom: 10px;
+          left: -5rem;
+          width: 30%;
+          height: 1px;
+          @include mq() {
+            display: none;
+          }
+        }
+        &::after {
+          content: "";
+          background: #fff;
+          position: absolute;
+          z-index: 3;
+          bottom: 10px;
+          right: -5rem;
+          width: 30%;
+          height: 1px;
+          @include mq() {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  //==================================================
+  //詳しくはこちらボタン
+  //==================================================
+  &-detail {
+    text-decoration: none;
+    color: #fff;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding-top: 16px;
+    display: block;
+    width: 250px;
+    height: 60px;
+    margin: auto;
+    border: 1px #fff solid;
+    transition: 0.4s;
+    @include mq() {
+      width: 90%;
+      margin: auto;
+    }
+    &:hover {
+      background: rgba(228, 227, 227, 0.6);
+      transition: 0.4s;
+    }
+  }
+  &-left {
+    z-index: 5;
+  }
+}
+
+//==================================================
+//boxの色を変えているエリア
+//==================================================
+.l-01 {
+  background: rgb(21, 48, 114);
+  &__number {
+    position: absolute;
+    bottom: -45px;
+    right: 0;
+    color: rgba(248, 241, 241, 0.1);
+    font-size: 300px;
+    line-height: 1;
+    z-index: -1;
+    @include mq() {
+      font-size: 150px;
+      bottom: -20px;
+    }
+  }
+}
+
+//==================================================
+//jobエリア
+//==================================================
+.p-kv__img {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+
+  img {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+    height: 600px;
+    opacity: .6;
+    // @include mq(){
+    //   width: -webkit-fill-available;
+    //   height: 100%;
+    // }
+  }
+}
+.simpleParallax{
+  height: 100%;
+}
+
+.job {
+  margin-top: 64px;
+  width: 100%;
+  height: 800px;
+  background-blend-mode: darken;
+  padding-top: 24px;
+  
+  &-title {
+    text-align: center;
+    width: fit-content;
+    padding: 0 12px;
+    background-color: rgba(255, 255, 255, 0.6);
+    margin: 12px auto 0 auto;
+
+    letter-spacing: 0.3em;
+    line-height: 4rem;
+    color: #333;
+    font-family: $font-family;
+  }
+  &-area {
+    width: 80%;
+    height: auto;
+    margin: 88px auto 0 auto;
+    display: flex;
+    justify-content: space-between;
+    @include mq() {
+      width: 100%;
+    }
+    &__detail {
+      text-decoration: none;
+      display: block;
+      padding: 10px 16px;
+      height: 60px;
+      border: 1px rgb(15, 13, 138) solid;
+      color: #fff;
+      margin: auto;
+      font-size: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      background-color: rgb(15, 13, 138) ;
+      opacity: .7;
+      margin-top: 60px;
+      transition: 0.4s;
+      @include mq(ls) {
+        width: 30%;
+      }
+      @include mq(md) {
+        width: 40%;
+      }
+      @include mq() {
+        width: 90%;
+      }
+      &:hover {
+        transition: 0.4s;
+        color: rgb(15, 13, 138) ;
+        border: 1px #fff solid;
+        background: rgba(255, 255, 255, 0.8);
+      }
+    }
+  }
+  &-box {
+    padding-top: 15px;
+    width: 30%;
+    height: 250px;
+    background: rgba(43, 93, 230, 0.6);
+    border-radius: 5px;
+    @include mq() {
+      height: 150px;
+    }
+    &__logo {
+      display: block;
+      // width: 80%;
+      height: 100px;
+      margin: 15px auto 0 auto;
+      @include mq() {
+        height: 50px;
+      }
+    }
+    &__title {
+      width: 100%;
+      margin-top: 30px;
+      text-align: center;
+      line-height: 4rem;
+      font-family: $font-family;
+      color: #fff;
+      letter-spacing: 0.2em;
+      br {
+        display: none;
+      }
+      @include mq() {
+        margin-top: 10px;
+        line-height: 2rem;
+        font-size: 16px;
+        br {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+//==================================================
+//先輩インタビューエリア
+//==================================================
+.interview {
+  width: 90%;
+  height: auto;
+  margin: 64px auto 0 auto;
+  @include mq(md) {
+    width: 100%;
+  }
+  @include mq() {
+    width: 100%;
+  }
+  &-title {
+    width: 100%;
+    text-align: center;
+    font-family: $font-family;
+    letter-spacing: 0.2em;
+    color: #333;
+  }
+  &-area {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 100%;
+    height: auto;
+    margin-top: 32px;
+    @include mq(md) {
+      justify-content: center;
+    }
+  }
+  &-panel {
+    display: block;
+    width: 30%;
+    height: auto;
+    text-decoration: none;
+    color: #333;
+    position: relative;
+    margin-right: 16px;
+    margin-bottom: 25px;
+    @include mq(md) {
+      width: 48%;
+      margin-right: 4px;
+      margin-bottom: 35px;
+    }
+    @include mq() {
+      margin-right: 0;
+      width: 100%;
+    }
+
+    &__person {
+      width: 100%;
+      height: 484px;
+      overflow: hidden;
+      background-position: top;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+      z-index: 4;
+      transition: 0.3s;
+      @include mq(ls) {
+        height: 400px;
+      }
+      &:hover {
+        opacity: 0.6;
+        transition: 0.3s;
+      }
+    }
+    &__label {
+      box-sizing: border-box;
+      width: 90%;
+      position: absolute;
+      z-index: 3;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 10px;
+      background: #fff;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+      @include mq(md) {
+        width: 100%;
+      }
+      p {
+        width: 100%;
+        text-align: center;
+        line-height: 45px;
+      }
+    }
+    &__comment {
+      width: 100%;
+      height: auto;
+      padding: 30px 10px 15px 10px;
+      background: rgba(228, 227, 227, 0.6);
+      position: relative;
+      z-index: 0;
+      min-height: 200px;
+
+      @include mq(ls) {
+        min-height: 190px;
+      }
+      @include mq(md) {
+        min-height: 106px;
+      }
+      @include mq() {
+        min-height: 170px;
+      }
+
+      p {
+        width: 100%;
+        line-height: 3rem;
+        font-size: 24px;
+        font-weight: bold;
+        font-family: $font-family;
+        text-align: center;
+        @include mq(ls) {
+          font-size: 20px;
+        }
+        @include mq(md) {
+          line-height: 1.2;
+        }
+      }
+    }
+  }
+  &-detail {
+    width: 100%;
+    height: 70px;
+    display: block;
+    background: rgba(0, 0, 0, 0.8);
+    text-decoration: none;
+    color: #fff;
+    text-align: center;
+    padding-top: 15px;
+    letter-spacing: 0.2em;
+    line-height: 3rem;
+    position: relative;
+
+    @include mq(ls) {
+      font-size: 20px;
+    }
+    @include mq() {
+      padding: 15px 10px;
+    }
+    &::after {
+      position: absolute;
+      content: "→";
+      color: #fff;
+      width: 50px;
+      height: 30px;
+      right: 28%;
+      font-size: 24px;
+      bottom: 25px;
+      transition: 0.3s;
+      @include mq(ls) {
+        right: 22%;
+      }
+      @include mq(md) {
+        right: 19%;
+      }
+      @include mq() {
+        display: none;
+      }
+    }
+    &:hover::after {
+      transition: 0.3s;
+      transform: translateX(8px);
+    }
+    &:hover {
+      background: rgba(0, 0, 0, 0.5);
+    }
+  }
+}
+
+//==================================================
+//人材開発
+//==================================================
+.system {
+  width: 100%;
+  height: auto;
+  position: relative;
+  margin-top: 64px;
+  &-area {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: auto;
+    @include mq() {
+      flex-wrap: wrap;
+    }
+  }
+  &-title {
+    width: 100%;
+    text-align: center;
+    font-family: $font-family;
+    color: #fff;
+    letter-spacing: 2em;
+    line-height: 3rem;
+    position: absolute;
+    top: 140px;
+    z-index: 5;
+    @include mq(md) {
+      letter-spacing: 1rem;
+    }
+    @include mq() {
+      font-size: 24px;
+    }
+  }
+  &-left {
+    background-position: center;
+    padding: 250px 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    width: 50%;
+    height: 800px;
+    background-color: rgba(0, 0, 0, 0.5);
+    background-blend-mode: darken;
+    @include mq() {
+      height: 700px;
+      width: 100%;
+    }
+    //BOXの中身アイコン、タイトル、文章
+    &__box {
+      display: block;
+      text-decoration: none;
+      width: 50%;
+      height: 330px;
+      background: rgba(79, 153, 236, 0.5);
+      float: right;
+      padding: 20px 10px;
+      transition: 0.3s;
+      @include mq(md) {
+        width: 70%;
+      }
+      @include mq() {
+        width: 100%;
+      }
+      &:hover {
+        transition: 0.3s;
+        background: rgba(79, 153, 236, 0.3);
+      }
+      img {
+        display: block;
+        width: 30%;
+        margin: auto;
+      }
+      h2 {
+        line-height: 3rem;
+        color: #fff;
+        font-family: $font-family;
+        width: 100%;
+        text-align: center;
+      }
+      p {
+        color: #fff;
+        font-family: $font-family;
+        width: 100%;
+        text-align: center;
+        margin-top: 20px;
+      }
+    }
+    &:nth-child(2) {
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+      width: 50%;
+      height: 800px;
+      background-color: rgba(0, 0, 0, 0.5);
+      background-blend-mode: darken;
+      padding: 250px 0;
+      @include mq() {
+        height: 700px;
+        width: 100%;
+      }
+
+      .system-left__box {
+        display: block;
+        text-decoration: none;
+        width: 50%;
+        height: 330px;
+        background: rgba(152, 79, 236, 0.5);
+        float: left;
+        padding: 20px 10px;
+        transition: 0.3s;
+        @include mq(md) {
+          width: 70%;
+        }
+        @include mq() {
+          width: 100%;
+        }
+        &:hover {
+          transition: 0.3s;
+          background: rgba(152, 79, 236, 0.3);
+        }
+        img {
+          display: block;
+          width: 30%;
+          margin: auto;
+        }
+        h2 {
+          line-height: 3rem;
+          color: #fff;
+          font-family: $font-family;
+          width: 100%;
+          text-align: center;
+        }
+        p {
+          color: #fff;
+          font-family: $font-family;
+          width: 100%;
+          text-align: center;
+          margin-top: 20px;
+        }
+      }
+    }
+  }
+}
+
+//==================================================
+//NEWS
+//==================================================
+.news {
+  width: 100%;
+  height: 300px;
+  background: #333;
+  padding: 30px 260px;
+  margin-top: 64px;
+  overflow: scroll;
+  @include mq(md) {
+    padding: 30px 200px;
+  }
+  @include mq() {
+    padding: 5px;
+  }
+  &-title {
+    width: 100%;
+    line-height: 3rem;
+    color: #fff;
+    font-family: $font-family;
+    width: 100%;
+    text-align: center;
+    font-size: 32px;
+  }
+  ul {
+    list-style: none;
+    margin-top: 20px;
+    li {
+      line-height: 2rem;
+      padding: 5px;
+      color: #77CBAE;
+      a {
+        color: #fff;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+//==================================================
+//footer
+//==================================================
+.footer {
+  color: #fff;
+  width: 100%;
+  height: 300px;
+  background: #000;
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 60px;
+  left: 0;
+  @include mq(md) {
+    padding: 40px 20px;
+  }
+  @include mq() {
+    height: auto;
+    display: block;
+  }
+  &-left {
+    width: 40%;
+    height: 100%;
+    @include mq() {
+      width: 100%;
+      height: auto;
+    }
+    &__logo {
+      max-width: 200px;
+      max-height: 110px;
+      text-align: center;
+      color: #fff;
+      overflow: hidden;
+      display: block;
+      img {
+        width: 100%;
+        object-fit: contain;
+      }
+    }
+    &__add {
+      width: 100%;
+      text-align: center;
+      margin-top: 20px;
+    }
+  }
+
+  &-right {
+    width: 60%;
+    height: 100%;
+    @include mq() {
+      width: 100%;
+      height: auto;
+      margin-top: 24px;
+    }
+    ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      width: 100%;
+      @include mq(ls) {
+        flex-wrap: wrap;
+      }
+      @include mq() {
+        display: block;
+      }
+      li {
+        padding: 5px 12px;
+        a {
+          text-decoration: none;
+          color: #fff;
+          position: relative;
+          &::after {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 1px;
+            background: #fff;
+            content: "";
+            transition: 0.3s;
+            margin-right: 8px;
+          }
+          &:hover::after {
+            transition: 0.3s;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+  &-recruite {
+    width: 250px;
+    height: 50px;
+    display: block;
+    color: #333;
+    margin: 24px auto 0 auto;
+    text-decoration: none;
+    background: #fff;
+    text-align: center;
+    padding-top: 15px;
+    transition: 0.3s;
+    @include mq() {
+      width: 100%;
+    }
+    &:hover {
+      background: rgb(60, 63, 238);
+      color: #fff;
+      transition: 0.3s;
+    }
+  }
+}
+
+.copy-right {
+  width: 100%;
+  height: 40px;
+  background: #000;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  bottom: 0;
+  z-index: 10;
+}

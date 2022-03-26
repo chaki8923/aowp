@@ -1,0 +1,281 @@
+/*
+Theme Name: LIVE
+Author: Chaki Ryou
+Version: 1.0
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+*/
+
+@import "base";
+@import "search";
+@import "contact";
+@import "404";
+@import "object/compornent";
+@import "object/project";
+@import "object/utility";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+//================================================================
+//ヘッダー
+//================================================================
+.bar {
+  width: 60px;
+  height: 60px;
+  background: #000;
+  position: fixed;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  z-index: 5;
+  display: none;
+  @include mq(md){
+  
+    display: block;
+    z-index: 20;
+  }
+  @include mq() {
+    display: block;
+    z-index: 20;
+  }
+  &-top {
+    background: #fff;
+    position: absolute;
+    height: 2px;
+    width: 25px;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: 0.3s;
+    &.active {
+      transition: 0.3s;
+      transform: rotate(45deg);
+      top: 30px;
+      left: 30%;
+    }
+  }
+  &-middle {
+    background: #fff;
+    position: absolute;
+    height: 2px;
+    width: 25px;
+    top: 29px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: 0.3s;
+    &.active {
+      transition: 0.3s;
+      opacity: 0;
+    }
+  }
+  &-bottom {
+    background: #fff;
+    position: absolute;
+    height: 2px;
+    width: 25px;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    &.active {
+      transition: 0.3s;
+      transform: rotate(-45deg);
+      bottom: 28px;
+      left: 30%;
+    }
+  }
+}
+
+.header-menu {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 50;
+  .header{
+    height: 100%;
+    div{
+      height: 100%;
+    }
+  }
+  ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+
+    height: 100%;
+    @include mq(md){
+      padding: 48px 10px;
+      flex-wrap: wrap;
+      height: auto;
+    }
+    li{
+      display: inline-block;
+      padding: 10px 24px;
+
+      @include mq(md){
+        font-size: 24px;
+        width: 100%;
+        text-align: center;
+        line-height: 3re;
+      }
+      @include mq(){
+        padding: 0;
+      }
+
+      a{
+        text-decoration: none;
+        color: #fff;
+      }
+    }
+  }
+  @include mq(md){
+
+    width: 80%;
+    width: 50%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    z-index: 16;
+    background: rgba(0, 0, 0, 0.6);
+    transition: .4s;
+  }
+  @include mq() {
+   
+  }
+  &.slideIn{
+    transition: .4s;
+    right: 0;
+}
+}
+
+.top-menu {
+  text-align: center;
+  @include mq(md){
+    padding: 24px 15px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    list-style: none;
+  }
+  @include mq() {
+    
+  }
+  li {
+    display: inline-block;
+    padding: 15px 25px;
+    color: #fff;
+    @include mq(md){
+      padding: 15px 0px;
+      width: 100%;
+    }
+    @include mq(){
+      padding: 15px 0px;
+      width: 100%;
+    }
+
+    @include mq() {
+      font-family: $main-font;
+      letter-spacing: 2px;
+      line-height: 3rem;
+      margin-bottom: 25px;
+      font-size: 1rem;
+    }
+
+    a {
+      text-decoration: none;
+      color: #fff;
+      img {
+        width: 25px;
+      }
+    }
+  }
+}
+
+.container-single__after{
+  
+    background: url("../img/valentin-bonjour-TIdqm0Cl8UA-unsplash.jpg") no-repeat;
+  
+}
+.container-blog__after {
+
+    background: url("../img/party4.jpg") no-repeat;
+  
+}
+.container-cat__after{
+    background: url("../img/party3.jpg") no-repeat;
+  
+}
+.container-about__after {
+  background: url("../img/party5.jpg") no-repeat;
+
+}
+.container-news__after {
+  background: url("../img/party10.jpg") no-repeat;
+}
+.container {
+  width: 100%;
+  position: relative;
+}
+
+.after{
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  z-index: -999;
+  background-repeat: no-repeat;
+
+}
+
+.p-title {
+  width: 100%;
+  padding: 230px 0;
+  text-align: center;
+  @include mq(ls){
+    padding: 160px 0;
+  }
+  @include mq(){
+    padding: 60px 0;
+  }
+  h1 {
+    margin: auto;
+    color: #fff;
+    font-size: 42px;
+    font-family: $style-font;
+    position: relative;
+    border: 4px solid transparent;
+    border-left-color: #d00;
+    border-right-color: #00d;
+    padding: 10px;
+    width: fit-content;
+    text-align: center;
+    min-width: 400px;
+    background: rgba(0, 0, 0, 0.6);
+    &::before,
+    &::after {
+      position: absolute;
+      left: -4px;
+      right: -4px;
+      bottom: -4px;
+      height: 4px;
+      background: linear-gradient(to right, #d00, #00d);
+      content: "";
+    }
+    &::before {
+      top: -4px;
+      bottom: -4px;
+    }
+    @include mq(){
+      min-width: 350px;
+    }
+  }
+}

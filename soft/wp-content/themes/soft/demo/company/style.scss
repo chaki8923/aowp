@@ -1,0 +1,966 @@
+@import "base";
+@import 'single';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $font-family;
+}
+
+//================================================================
+//ヘッダー
+//================================================================
+.header {
+  width: 100%;
+  height: 60px;
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  @include mq(md){
+      display: none;
+  }
+  &-sp{
+ 
+      width: 60%;
+      height: 600px;
+      background: rgba(0, 0, 0, 0.8);
+      position: fixed;
+      z-index: 10;
+      top: 0;
+      right: 0;
+      transform: translateX(100%);
+      padding: 40px 0 0 10px;
+      transition: .4s;
+      &.active{
+        transition: .4s;
+        transform: translateX(0);
+      }
+
+      ul{
+        list-style: none;
+        a{
+          text-decoration: none;
+          color: #fff;
+          li{
+            line-height: 4rem;
+            padding: 5px;
+            font-size: 24px;
+            @include mq(){
+              
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    
+  }
+  ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    width: 100%;
+    height: 60px;
+    a {
+      text-decoration: none;
+      color: #fff;
+      li {
+        line-height: 3rem;
+        font-family: $font-family;
+        margin-right: 20px;
+        padding: 5px 10px;
+        transition: 0.4s;
+        &:hover {
+          color: rgb(223, 95, 9);
+          transition: 0.4s;
+        }
+      }
+    }
+  }
+}
+
+//================================================================
+//メイン動画
+//================================================================
+.main {
+  width: 100%;
+  height: auto;
+  position: relative;
+  overflow: hidden;
+  &-catch {
+    width: 100%;
+    height: auto;
+    position: relative;
+    &__title {
+      opacity: 0.8;
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%);
+      bottom: 10%;
+      font-family: $font-family;
+      letter-spacing: 0.3em;
+      line-height: 6rem;
+      width: 100%;
+      text-align: center;
+      color: #fff;
+      font-size: 3em;
+      text-shadow: 0 0 15px $btn-color;
+      br{
+        display: block;
+      }
+      @include mq(){
+        bottom: 30%;
+        line-height: 2rem;
+        font-size: 16px;
+        br{
+          display: none;
+        }
+      }
+    }
+  }
+  &-movie {
+    width: 100%;
+    @include mq(){
+      height: 380px;
+    }
+  }
+}
+
+//================================================================
+//思い
+//================================================================
+
+//================================================================
+//アバウト
+//================================================================
+.about {
+  width: 100%;
+  height: auto;
+  margin-top: 60px;
+  overflow: hidden;
+  &-box {
+    width: 80%;
+    height: auto;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    @include mq(md){
+      width: 90%;
+    }
+    @include mq(){
+      width: 100%;
+    }
+
+    &:nth-of-type(even) {
+      flex-direction: row-reverse;
+    }
+  }
+
+  //==================================================
+  //左右のBOX
+  //==================================================
+  &-left,
+  &-right {
+    width: 50%;
+    height: 410px;
+    position: relative;
+    font-family: $font-family;
+    background-position: center;
+    background-size: cover;
+    &__inner {
+      display: block;
+      text-decoration: none;
+      color: #fff;
+      margin-top: 40px;
+      width: 100%;
+      height: 220px;
+      @include mq(){       
+        height: 190px;
+      }
+    }
+
+    //==================================================
+    //boxのタイトル
+    //==================================================
+    &__title {
+      width: 100%;
+      text-align: center;
+      line-height: 3rem;
+      position: relative;
+      z-index: 3;
+      &sub {
+        display: block;
+        width: 40%;
+        text-align: center;
+        margin: 16px auto 0 auto;
+        position: relative;
+        z-index: 3;
+        @include mq(){     
+          width: 90%;
+        }
+        &::before {
+          content: "";
+          background: #fff;
+          position: absolute;
+          bottom: 10px;
+          left: -5rem;
+          width: 30%;
+          height: 1px;
+          @include mq(){
+            display: none;
+          }
+        }
+        &::after {
+          content: "";
+          background: #fff;
+          position: absolute;
+          z-index: 3;
+          bottom: 10px;
+          right: -5rem;
+          width: 30%;
+          height: 1px;
+          @include mq(){
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  
+  //==================================================
+  //詳しくはこちらボタン
+  //==================================================
+  &-detail {
+    text-decoration: none;
+    color: #fff;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding-top: 16px;
+    display: block;
+    width: 250px;
+    height: 60px;
+    margin: auto;
+    border: 1px #fff solid;
+    transition: 0.4s;
+    @include mq(){
+      width: 90%;
+      margin: auto;
+    }
+    &:hover {
+      background: rgba(228, 227, 227, 0.6);
+      transition: 0.4s;
+    }
+  }
+  &-left {
+    z-index: 5;
+  }
+}
+
+//==================================================
+//boxの色を変えているエリア
+//==================================================
+.l-01 {
+  background: rgb(21, 48, 114);
+  &__number {
+    position: absolute;
+    bottom: -45px;
+    right: 0;
+    color: rgba(248, 241, 241, 0.1);
+    font-size: 400px;
+    line-height: 1;
+    z-index: -1;
+    @include mq(){     
+      font-size: 150px;
+      bottom: -20px;
+    }
+  }
+  &::after {
+    content: "";
+    background: rgb(21, 48, 114);
+    position: absolute;
+    top: 200px;
+    right: -38px;
+    width: 40px;
+    height: 40px;
+    clip-path: polygon(0 0, 0% 100%, 100% 50%);
+  }
+}
+.l-02 {
+  background: rgb(46, 118, 116);
+  &__number {
+    position: absolute;
+    bottom: -45px;
+    left: 0;
+    color: rgba(248, 241, 241, 0.1);
+    font-size: 400px;
+    line-height: 1;
+    z-index: -1;
+    @include mq(){     
+      font-size: 150px;
+      bottom: -20px;
+    }
+  }
+  &::after {
+    content: "";
+    background: rgb(46, 118, 116);
+    position: absolute;
+    top: 200px;
+    left: -38px;
+    width: 40px;
+    height: 40px;
+    transform: rotate(180deg);
+    clip-path: polygon(0 0, 0% 100%, 100% 50%);
+  }
+}
+.l-03 {
+  background: rgb(18, 93, 130);
+  &__number {
+    position: absolute;
+    bottom: -45px;
+    right: 0;
+    color: rgba(248, 241, 241, 0.1);
+    font-size: 400px;
+    line-height: 1;
+    z-index: -1;
+    @include mq(){     
+      font-size: 150px;
+      bottom: -20px;
+    }
+  }
+  &::after {
+    content: "";
+    background: rgb(18, 93, 130);
+    position: absolute;
+    top: 200px;
+    right: -38px;
+    width: 40px;
+    height: 40px;
+    // transform: rotate(180deg);
+    clip-path: polygon(0 0, 0% 100%, 100% 50%);
+  }
+}
+.l-04 {
+  background: rgb(56, 47, 116);
+  &__number {
+    position: absolute;
+    bottom: -45px;
+    left: 0;
+    color: rgba(248, 241, 241, 0.1);
+    font-size: 400px;
+    line-height: 1;
+    z-index: -1;
+    @include mq(){     
+      font-size: 150px;
+      bottom: -20px;
+    }
+  }
+  &::after {
+    content: "";
+    background: rgb(56, 47, 116);
+    position: absolute;
+    top: 200px;
+    left: -38px;
+    width: 40px;
+    height: 40px;
+    transform: rotate(180deg);
+    clip-path: polygon(0 0, 0% 100%, 100% 50%);
+  }
+}
+//==================================================
+//画像スライドエリア
+//==================================================
+.r-01,.r-03{
+  transform: translateX(-100%);
+  transition: .3s;
+  opacity: 0;
+  &.slidein{
+    transform: translateX(0);
+    transition: .4s;
+    opacity: 1;
+  }
+}
+.r-02,.r-04{
+  transform: translateX(100%);
+  transition: .3s;
+  opacity: 0;
+  &.slidein{
+    transform: translateX(0);
+    transition: .4s;
+    opacity: 1;
+  }
+}
+
+//==================================================
+//jobエリア
+//==================================================
+.job {
+  margin-top: 64px;
+  padding: 64px 20px 0 20px;
+  width: 100%;
+  height: 800px;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  background-blend-mode: darken;
+  @include mq(){     
+    height: 500px;
+  }
+  &-title {
+    text-align: center;
+    font-size: 40px;
+    width: 100%;
+    letter-spacing: 0.3em;
+    line-height: 4rem;
+    color: #fff;
+    font-family: $font-family;
+    
+  }
+  &-area {
+    width: 80%;
+    height: auto;
+    margin: 88px auto 0 auto;
+    display: flex;
+    justify-content: space-between;
+    @include mq(){     
+      width: 100%;
+    }
+    &__detail{
+      text-decoration: none;
+      display: block;
+      width: 20%;
+      height: 60px;
+      border: 1px #fff solid;
+      color: #fff;
+      margin: auto;
+      font-size: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 60px;
+      transition: .4s;
+      @include mq(ls){
+        width: 30%;
+      }
+      @include mq(md){
+        width: 40%;
+      }
+      @include mq(){     
+        width: 90%;
+      }
+      &:hover{
+        transition: .4s;
+        color: #333;
+        background: rgba(255, 255, 255, 0.8);
+      }
+
+    }
+  }
+  &-box {
+    padding-top: 15px;
+    width: 30%;
+    height: 250px;
+    background: rgba(43, 93, 230, 0.6);
+    border-radius: 5px;
+    @include mq(){     
+      height: 150px;
+    }
+    &__logo{
+      display: block;
+      // width: 80%;
+      height: 100px;
+      margin: 15px auto 0 auto;
+      @include mq(){     
+        height: 50px;
+      }
+    }
+    &__title{
+      width: 100%;
+      margin-top: 30px;
+      text-align: center;
+      line-height: 4rem;
+      font-family: $font-family;
+      color: #fff;
+      letter-spacing: .2em;
+      br{
+        display: none;
+      }
+      @include mq(){
+        margin-top: 10px;     
+        line-height: 2rem;
+        font-size: 16px;
+        br{
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+//==================================================
+//先輩インタビューエリア
+//==================================================
+.interview{
+  width: 90%;
+  height: auto;
+  margin: 64px auto 0 auto;
+  @include mq(md){
+    width: 100%;
+  }
+  @include mq(){     
+    width: 100%;
+  }
+  &-title{
+    width: 100%;
+    text-align: center;
+    font-family: $font-family;
+    letter-spacing: .2em;
+
+
+  }
+  &-area{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    height: auto;
+    margin-top: 32px;
+  }
+  &-panel{
+    display: block;
+    width: 30%;
+    height: auto;
+    text-decoration: none;
+    color: #333;
+    position: relative;
+    margin-bottom: 25px;
+    @include mq(md){     
+      margin-bottom: 35px;
+    }
+    @include mq(){     
+      width: 100%;
+    }
+    
+    &__person{
+      width: 100%;
+      height: 484px;
+      overflow: hidden;
+      background-position: top;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+      z-index: 4;
+      transition: .3s;
+      @include mq(ls){
+        height: 400px;
+      }
+    &:hover{
+     opacity: .6;
+     transition: .3s;
+    }
+    
+    }
+    &__label{
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      width: 80%;
+      height: 45px;
+      position: absolute;
+      z-index: 3;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 10px;
+      background: #fff;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+      @include mq(md){
+        width: 100%;
+      }
+      p{
+        width: 60%;
+        text-align: center;
+        line-height: 45px;
+      }
+    }
+    &__comment{
+      width: 100%;
+      height: auto;
+      padding: 30px 10px 15px 10px;
+      background: rgba(228, 227, 227, 0.6);
+      position: relative;
+      z-index: 0;
+      
+      @include mq(ls){
+        
+        min-height: 190px;
+
+      }
+      @include mq(md){
+        min-height: 106px;
+
+      }
+      @include mq(){     
+        min-height: 170px;
+      }
+
+      p{
+        width: 100%;
+        line-height: 3rem;
+        font-size: 24px;
+        font-weight: bold;
+        font-family: $font-family;
+        text-align: center;
+        @include mq(ls){
+          font-size: 20px; 
+         }
+        @include mq(md){
+          line-height: 1.2;
+         }
+
+      }
+    }
+  }
+  &-detail{
+    width: 100%;
+    height: 70px;
+    display: block;
+    background: rgba(0, 0, 0, 0.8);
+    text-decoration: none;
+    color: #fff;
+    text-align: center;
+    padding-top: 15px;
+    letter-spacing: .2em;
+    line-height: 3rem;
+    position: relative;
+    
+    @include mq(ls){
+     font-size: 20px; 
+    }
+    @include mq(){     
+      padding: 15px 10px;
+    }
+    &::after{
+      position: absolute;
+      content: '→';
+      color: #fff;
+      width: 50px;
+      height: 30px;
+      right: 37%;
+      font-size: 24px;
+      bottom: 25px;
+      transition: .3s;
+      @include mq(ls){
+        right: 22%;
+      }
+      @include mq(md){
+        right: 19%;;
+      }
+      @include mq(){     
+        display: none;
+      }
+    }
+    &:hover::after{
+      transition: .3s;
+      transform: translateX(8px);
+    }
+    &:hover{
+      background: rgba(0, 0, 0, 0.5);
+    }
+  }
+}
+
+
+//==================================================
+//人材開発
+//==================================================
+.system{
+  width: 100%;
+  height: auto;
+  position: relative;
+  margin-top: 64px;
+  &-area{
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: auto;
+    @include mq(){
+      flex-wrap: wrap;
+    }
+  }
+  &-title{
+    width: 100%;
+    text-align: center;
+    font-family: $font-family;
+    color: #fff;
+    letter-spacing: 2em;
+    font-size: 32px;
+    line-height: 3rem;
+    position: absolute;
+    top: 140px;
+    z-index: 5;
+    @include mq(md){
+      letter-spacing: 1rem;
+    }
+    @include mq(){     
+      font-size: 24px;
+    }
+  }
+  &-left{
+    background-position: center;
+    padding: 250px 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    width: 50%;
+    height: 800px;
+    background-color: rgba(0,0,0,0.5);
+    background-blend-mode: darken;
+    @include mq(){
+      height: 700px;
+      width: 100%;
+    }
+    //BOXの中身アイコン、タイトル、文章
+    &__box{
+      display: block;
+      text-decoration: none;
+      width: 50%;
+      height: 330px;
+      background: rgba(79, 153, 236, 0.5);
+      float: right;
+      padding: 20px 10px;
+      transition: .3s;
+      @include mq(md){
+        width: 70%;
+      }
+      @include mq(){     
+        width: 100%;
+      }
+      &:hover{
+        transition: .3s;
+        background: rgba(79, 153, 236, 0.3);
+
+      }
+      img{
+        display: block;
+        width: 30%;
+        margin: auto;
+      }
+      h2{
+        line-height: 3rem;
+        color: #fff;
+        font-family: $font-family;
+        width: 100%;
+        text-align: center;
+      }
+      p{
+        color: #fff;
+        font-family: $font-family;
+        width: 100%;
+        text-align: center;
+        margin-top: 20px;
+      }
+    }
+    
+  }
+  &-right{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    width: 50%;
+    height: 800px;
+    background-color: rgba(0,0,0,0.5);
+    background-blend-mode: darken;
+    padding: 250px 0;
+    @include mq(){
+      height: 700px;
+      width: 100%;
+    }
+   
+    &__box{
+      display: block;
+      text-decoration: none;
+      width: 50%;
+      height: 330px;
+      background: rgba(152, 79, 236, 0.5);
+      float: left;
+      padding: 20px 10px;
+      transition: .3s;
+      @include mq(md){
+        width: 70%;
+      }
+      @include mq(){     
+        width: 100%;
+      }
+      &:hover{
+        transition: .3s;
+        background: rgba(152, 79, 236, 0.3);
+
+      }
+      img{
+        display: block;
+        width: 30%;
+        margin: auto;
+      }
+      h2{
+        line-height: 3rem;
+        color: #fff;
+        font-family: $font-family;
+        width: 100%;
+        text-align: center;
+      }
+      p{
+        color: #fff;
+        font-family: $font-family;
+        width: 100%;
+        text-align: center;
+        margin-top: 20px;
+      }
+    }
+
+  }
+}
+
+
+//==================================================
+//NEWS
+//==================================================
+.news{
+  width: 100%;
+  height: 300px;
+  background: rgb(10, 2, 82);
+  padding: 30px 260px;
+  margin-top: 64px;
+  overflow: scroll;
+  @include mq(md){
+    padding: 30px 200px;
+    
+  }
+  @include mq(){
+    padding: 5px;
+  }
+  &-title{
+    width: 100%;
+    line-height: 3rem;
+    color: #fff;
+    font-family: $font-family;
+    width: 100%;
+    text-align: center;
+    font-size: 32px;
+  }
+  ul{
+    list-style: none;
+    margin-top: 20px;
+    li{
+      color: #fff;
+      line-height: 2rem;
+      padding: 5px;
+    }
+  }
+}
+
+//==================================================
+//footer
+//==================================================
+.footer{
+  color: #fff;
+  width: 100%;
+  height: 300px;
+  background: #000;
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 60px;
+  @include mq(md){
+    padding: 40px 20px;
+    
+  }
+  @include mq(){
+    height: auto;
+    display: block;
+  }
+  &-left{
+    width: 40%;
+    height: 100%;
+    @include mq(){
+      width: 100%;
+      height: auto;
+    }
+    &__logo{
+      width: 100%;
+      height: 80px;
+      background: rgb(130, 145, 153);
+      text-align: center;
+      color: #fff;
+    }
+    &__add{
+      width: 100%;
+      text-align: center;
+      margin-top: 20px;
+    }
+  }
+
+  &-right{
+    width: 60%;
+    height: 100%;
+    @include mq(){
+      width: 100%;
+      height: auto;
+      margin-top: 24px;
+    }
+    ul{
+      display: flex;
+      justify-content: space-around;
+      list-style: none;
+      width: 100%;
+      @include mq(ls){
+        flex-wrap: wrap;
+      }
+      @include mq(){
+        display: block;
+      }
+      a{
+        text-decoration: none;
+        color: #fff;
+        li{
+          padding: 5px;
+          &:hover{
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+  &-recruite{
+    width: 250px;
+    height: 50px;
+    display: block;
+    color: #333;
+    margin: 24px auto 0 auto;
+    text-decoration: none;
+    background: #fff;
+    text-align: center;
+    padding-top: 15px;
+    transition: .3s;
+    @include mq(){
+      width: 100%;
+    }
+    &:hover{
+      background: rgba(182, 179, 179, 0.8);
+      transition: .3s;
+    }
+  }
+}
+
+.copy-right{
+  width: 100%;
+  height: 40px;
+  background: #000;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}

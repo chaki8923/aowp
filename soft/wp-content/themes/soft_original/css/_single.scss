@@ -1,0 +1,71 @@
+//===================================================
+//サムネ画像
+//===================================================
+.c-img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.thumbnail{
+  width: 100%;
+  height: 380px;
+  margin: 32px auto;
+  text-align: center;
+  @include mq(){
+    margin-top: 65px;
+    height: auto;
+  }
+  .blog-image{
+    width: 60%;
+    height: 100%;
+    object-fit: cover;
+    @include mq(md){
+      width: 80%;
+    }
+    @include mq(){
+      width: 90%;
+    }
+
+  }
+}
+.voice-thumbnail{
+  @include mq(md){
+    height: auto;
+  }
+}
+
+.abater{
+  width: 50%;
+  margin: auto;
+  @include mq(md){
+    width: 100%;
+  }
+}
+
+.single-title{
+  text-align: center;
+  font-family: $font-family;
+  color: $font-color;
+  padding: 15px 0;
+  margin: 32px 0;
+  font-size: 32px;
+  background: rgba(185, 182, 173, 0.3);
+}
+
+.single p{
+  font-family: $font-family;
+  color: #333;
+  font-size: 16px;
+  font-weight: normal;
+  letter-spacing: .2em;
+}
+
+.single-content{
+  width: 100%;
+  padding: 24px 12px;
+  margin-top: 40px;
+  img{
+    width: auto;
+    height: auto;
+  }
+}

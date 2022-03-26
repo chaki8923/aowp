@@ -1,0 +1,247 @@
+/* ====================================================================== */
+
+
+/* ====================================================================== */
+
+
+.radio{
+  width: fit-content;
+  margin: auto;
+  text-align: left;
+}
+
+.slide-text{
+  width: 100%;
+}
+/* ====================================================================== */
+/* ====================================================================== */
+.culnm-flex{
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 24px;
+}
+
+.custom-area{
+  width: 100%;
+  padding: 16px 10px;
+  background: #ddd;
+  margin-bottom: 16px;
+  display: none;
+}
+
+.custom-area th{
+  width: 300px;
+}
+.custom-area td{
+  width: 580px;
+}
+
+.input-style{
+  width: 80%;
+  margin-bottom: 10px;
+}
+
+.label{
+  display: block;
+}
+
+.panel{
+  text-align: center;
+  width: 30%;
+
+}
+
+.media-preview{
+  width: 100%;
+  height: auto;
+  background: #ddd;
+  position: relative;
+  overflow: hidden;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+.media-preview::after{
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 18px;
+  transform: translateX(-50%);
+  color: #333;
+  z-index: 0;
+}
+
+.media-preview img{
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  
+}
+
+
+.icon  img{
+    width: 150px;
+  
+
+}
+
+/* ====================================================================== */
+
+
+
+.plug-save {
+  padding: 4px 8px;
+  text-decoration: none;
+  border: 1px solid #2271b1;
+  border-radius: 2px;
+  text-shadow: none;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: normal;
+  color: #2271b1;
+  background: #f6f7f7;
+  cursor: pointer;
+  width: 450px;
+  margin-bottom: 40px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+
+}
+
+
+.media-select{
+  padding: 4px 8px;
+  text-decoration: none;
+  border: 1px solid #2271b1;
+  border-radius: 2px;
+  text-shadow: none;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: normal;
+  color: #2271b1;
+  background: #f6f7f7;
+  cursor: pointer;
+  margin-bottom: 8px;
+  transition: .2s;
+  display: block;
+  margin: auto;
+}
+
+.media-select:hover{
+
+  color: #fff;
+  background: #2271b1;
+  transition: .2s;
+}
+.media-clear{
+  transition: .2s;
+  cursor: pointer;
+  display: block;
+  margin: 16px auto;
+}
+.media-clear:hover{
+  opacity: .7;
+  transition: .2s;
+}
+
+/* カスタムフィールド内 */
+#actor-view{
+  margin-top: 16px;
+}
+#actor-view img{
+  width: 100%;
+}
+.actor-view{
+  margin-top: 16px;
+}
+.actor-view img{
+  width: 100%;
+}
+
+.back-view{
+  margin-top: 16px;
+}
+
+.detail-select,
+.icon-select{
+  background: #2271b1;
+  border:none;
+  color: #fff;
+  text-decoration: none;
+  text-shadow: none;
+  outline: none;
+  border-radius: 10px;
+  padding: 4px ;
+  cursor: pointer;
+}
+
+
+.components-disabled{
+  padding: 0 48px;
+}
+
+
+/* タブメニュー */
+.custom-tab{
+  width: 65%;
+  border: 1px solid rgb(28, 172, 230);
+  border-radius: 6px;
+  position: relative;
+  padding: 18px 10px;
+  margin: 28px auto;
+  cursor: pointer;
+  text-align: center;
+  transition: .2s;
+}
+.custom-tab span{
+  position: absolute;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 0 10px;
+  border-bottom: 4px solid #000;
+  border-right: 4px solid #000;
+  transform: rotate(45deg);
+  right: 30px;
+  top: 15px;
+  transition: .2s;
+}
+.custom-tab:hover{
+  transition: .3s;
+  background-color: rgb(28, 172, 230);
+  color: #fff;
+}
+
+.js-arrow.active{
+  transition: .2s;
+  transform: rotate(225deg);
+
+}
+
+
+.center{
+  text-align: center;
+}
+
+.produvt_preview{
+  margin: 16px 0 0 5%;
+}
+
+/* ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ */
+/* スケジュールエリア */
+/* ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ */
+.time-input{
+  width: 20%;
+  margin-right: 10px;
+}
+.job-input{
+  width: 75%;
+}
+.job-detail-input{
+  width: 100%;
+  height: 240px;
+  margin: 16px 0;
+}
+

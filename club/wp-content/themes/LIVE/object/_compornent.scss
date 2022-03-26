@@ -1,0 +1,139 @@
+.c-ticket{
+  margin-right: 10px;
+}
+
+.c-mounth{
+  background: rgb(231, 162, 11);
+  padding: 0 15px;
+  color: #fff;
+  line-height: 40px;
+}
+.c-cat{
+  background: rgba(231, 162, 11,.4);
+  padding: 0 20px;
+  color: #fff;
+  line-height: 40px;
+}
+
+.c-date{
+  display: block;
+  color: #333;
+  font-size: 32px;
+  padding: 15px 0;
+  font-family: $main-font;
+  @include mq(){
+    font-size: 22px;
+  }
+}
+.c-week{
+  display: block;
+  font-family: $main-font;
+  padding: 5px 0;
+  text-align: center;
+  color: #333;
+  
+}
+.c-year{
+  display: block;
+  color: #333;
+  font-family: $main-font;
+  padding: 5px 0;
+  text-align: center;
+}
+.c-article_title{
+  width: 100%;
+  line-height: 3rem;
+  text-align: center;
+  color: #fff;
+  font-size: 28px;
+  font-family: $style-font;
+}
+
+.c-img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.c-prev,
+.c-next{
+  padding: 10px 15px;
+  background: #ddd;
+  text-decoration: none;
+  text-align: center;
+  display: block;
+  color: #333;
+}
+.c-prev{
+  margin-right: 10px;
+}
+
+.c-article-prevNext{
+  margin: 20px 0;
+}
+.c-category-prevNext{
+  margin: 20px 16px;
+}
+
+.c-title{
+  font-size: 32px;
+  letter-spacing: .4em;
+  font-weight: normal;
+  line-height: 2.5rem;
+  text-align: center;
+  @include mq(){
+    font-size: 20px;
+  }
+
+}
+
+.c-img{
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  object-fit: cover;
+  display: block;
+}
+.c-text{
+  font-weight: normal;
+  font-family: $main-font;
+}
+
+.c-label{
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px 16px;
+  @include mq(){
+    padding: 0;
+  }
+  &_item{
+    list-style: none;
+  }
+}
+.c-sideTitle{
+  line-height: 2rem;
+  font-weight: normal;
+}
+
+.submit-search{
+ background: none;
+ border: none; 
+ position: absolute;
+ right: 12px;
+ top: 13px;
+ cursor: pointer;
+}
+
+.input-search{
+  width: 100%;
+  border: none;
+  height: 45px;
+  border-radius: 20px;
+  outline: none;
+  font-size: 16px;
+  padding-left: 8px;
+}
+
+#searchform{
+  position: relative;
+}

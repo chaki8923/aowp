@@ -1,0 +1,388 @@
+$breakpoints: (
+  "sp": "screen and (max-width: 590px)",
+  "md": "screen and (max-width: 785px)",
+  "ls": "screen and (max-width: 1025px)",
+  "xl": "screen and (max-width: 1100px)",
+) !default;
+
+@mixin mq($breakpoint: sp) {
+  @media #{map-get($breakpoints,$breakpoint)} {
+    @content;
+  }
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+$main-font: Helvetica, MyYuGothicM, YuGothic, -apple-system, BlinkMacSystemFont, "Hiragino kaku Gothic ProN", Meiryo,
+  sans-serif;
+
+$style-font: "Playfair Display", serif;
+a {
+  transition: 0.3s;
+}
+
+a:hover {
+  transition: 0.3s;
+  opacity: 0.7;
+}
+
+
+//==========================================================================
+//スライダー
+//==========================================================================
+.main-logo{
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  width: 150px;
+  height: 40px;
+  z-index: 80;
+  img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+  }
+}
+
+.slick-track {
+  height: 100vh;
+}
+
+.main-slider {
+  width: 100%;
+  height: 100vh;
+}
+.slide {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-position: center;
+  background-size: 120%;
+  background-repeat: no-repeat;
+  z-index: -999;
+  object-fit: cover;
+
+  &.zoomup {
+    transition: 8s;
+    transform: scale(1.5);
+  }
+  @include mq(ls) {
+    background-size: cover !important;
+  }
+  &-inner {
+    width: 100% !important;
+    color: #fff;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 15px);
+    bottom: 240px;
+    opacity: 0;
+    transition: 0.3s;
+    @include mq(){
+      width: 80%!important;
+      margin: auto;
+    }
+    &.zoomup {
+      transition: 8s;
+      transform: scale(1);
+    }
+    &.is--active {
+      opacity: 1;
+      transition: 0.8s;
+      transform: translate(-50%, 0);
+    }
+    p {
+      font-weight: $main-font;
+      letter-spacing: 0.2em;
+      line-height: 3rem;
+    }
+    h2 {
+      letter-spacing: 0.2em;
+      line-height: 3rem;
+      width: 100%;
+      font-family: $style-font;
+      font-size: 42px;
+      @include mq(){
+        font-size: 32px;
+      }
+    }
+    a {
+      font-family: $style-font;
+      color: #fff;
+      background: #333;
+      padding: 15px 20px;
+      width: 400px;
+      text-decoration: none;
+      display: block;
+      margin: 20px auto;
+      text-align: center;
+      transition: 0.3s;
+      @include mq(){
+        width: 100%;
+      }
+      &:hover {
+        transition: 0.3s;
+        background: rgb(211, 183, 57);
+        color: #333;
+      }
+    }
+  }
+}
+
+//スマホ横むき
+@media (orientation: landscape) and (max-width: 768px){
+  .slide-inner{
+    bottom: 40px;
+  }
+  }
+
+//================================
+.slick-prev {
+  position: absolute;
+  left: 10px;
+  bottom: 240px;
+  width: 30px;
+  height: 30px;
+  background: url('./img/white-arrowL.png') no-repeat;
+  background-size: 100%;
+  @include mq() {
+    bottom: 200px;
+    left: 30%;
+  }
+  img {
+    width: 100%;
+  }
+}
+.slick-next {
+  position: absolute;
+  right: 10px;
+  bottom: 240px;
+  width: 30px;
+  height: 30px;
+  background: url('./img/white-arrowR.png') no-repeat;
+  background-size: 100%;
+  @include mq() {
+    bottom: 200px;
+    right: 30%;
+  }
+  img {
+    width: 100%;
+  }
+}
+//================================
+//===========================================================
+//ページネーション
+//===========================================================
+.pagenation {
+
+  width: 100%;
+  margin: 40px auto;
+  ul {
+    list-style: none;
+    li {
+      margin-right: 10px;
+      background: #ddd;
+      display: inline-block;
+      &.active{
+        background: rgb(1, 71, 17);
+        padding: 10px 15px;
+        color: #fff;
+      }
+      a {
+        padding: 10px 15px;
+        display: block;
+        color: #000;
+        text-decoration: none;
+        transition: 0.3s;
+        &:hover {
+          transition: 0.3s;
+          background: rgb(1, 71, 17);
+          color: #fff;
+        }
+       
+      }
+    }
+    @include mq(ls) {
+      width: 90%;
+    }
+   
+  
+    @include mq() {
+      padding: 6px 10px;
+    }
+  
+  }
+}
+
+
+//SNSシェアエリア
+.share-area {
+  width: 100%;
+  text-align: center;
+  padding: 12px 10px;
+  color: #333;
+  p{
+    text-align: center;
+    margin-bottom: 10px;
+    color: #ddd;
+    background: rgba(0,0,0,.6);
+    padding: 8px 0;
+  }
+  ul {
+    list-style: none;
+    li {
+      display: inline-block;
+      position: relative;
+
+      a {
+        text-decoration: none;
+        color: #fff;
+        font-size: 30px;
+        padding: 0 16px;
+        width: 150px;
+        text-align: center;
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 12px;transition: .3s;
+        &:hover{
+          opacity: .7;
+          transition: .3s;
+        }
+        span {
+          font-size: 16px;
+          display: inline-block;
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+}
+
+.fasebook {
+  background: royalblue;
+}
+
+.tweet {
+  background: rgb(78, 165, 228);
+}
+.line {
+  background: rgb(30, 195, 0);
+}
+
+.pocket {
+  background: rgb(238, 64, 86);
+}
+.hatena {
+  background: rgb(43,111,189);
+  &::before {
+    content: "B!";
+    font-family: Verdana;
+    font-weight: bold;
+    font-size: 25px;
+  }
+}
+
+svg{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+}
+
+
+@keyframes text-move {
+  0% {
+    stroke-dashoffset: 400;
+    fill: none;
+  }
+  90% {
+    fill: #000;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    fill: #fff;
+  }
+}
+.my-text {
+  font-size: 72px;
+  font-weight: bold;
+  font-family: Arial;
+  fill: #fff;
+  stroke: #fff;
+  animation: text-move 3s ease-out;
+  stroke-dasharray: 400;
+  @include mq(ls){
+    display: none;
+
+  }
+
+}
+.my-text-sp{
+  display: none;
+  font-size: 34px;
+  font-weight: bold;
+  font-family: Arial;
+  fill: #fff;
+  stroke: #fff;
+  animation: text-move 3s ease-out;
+  stroke-dasharray: 400;
+  @include mq(){
+    display: block;
+  }
+}
+.my-text-md{
+  display: none;
+  font-size: 62px;
+  font-weight: bold;
+  font-family: Arial;
+  fill: #fff;
+  stroke: #fff;
+  animation: text-move 3s ease-out;
+  stroke-dasharray: 400;
+  @include mq(md){
+    display: block;
+  }
+  @include mq(){
+    display: none;
+  }
+}
+.my-text-ls{
+  display: none;
+  font-size: 72px;
+  font-weight: bold;
+  font-family: Arial;
+  fill: #fff;
+  stroke: #fff;
+  animation: text-move 3s ease-out;
+  stroke-dasharray: 400;
+  @include mq(ls){
+    display: block;
+  }
+  @include mq(md){
+    display: none;
+  }
+  @include mq(){
+    display: none;
+  }
+
+}
+
+rect{
+  width: 100vw!important;
+  height: 100vh!important;
+  position: fixed;
+  top: 0;
+  left: 0;
+  fill: #000;
+}

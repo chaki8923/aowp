@@ -1,0 +1,1153 @@
+$breakpoints: (
+  "sp": "screen and (max-width: 590px)",
+  "md": "screen and (max-width: 785px)",
+  "ls": "screen and (max-width: 1025px)",
+  "xl": "screen and (max-width: 1100px)",
+) !default;
+
+@mixin mq($breakpoint: sp) {
+  @media #{map-get($breakpoints,$breakpoint)} {
+    @content;
+  }
+}
+$main-font: "Times New Roman", "游明朝", "Yu Mincho", "游明朝体", "YuMincho", "ヒラギノ明朝 Pro W3",
+  "Hiragino Mincho Pro", "HiraMinProN-W3", "HGS明朝E", "ＭＳ Ｐ明朝", "MS PMincho", serif;
+
+$hover-color: rgb(238, 93, 26);
+.title {
+  width: 100%;
+  text-align: center;
+  font-family: $main-font;
+  line-height: 3rem;
+  font-size: 28px;
+}
+
+.page-height {
+  @include mq(ls) {
+    height: 100vh;
+  }
+  @include mq() {
+    height: auto;
+  }
+}
+.main{
+  min-height: 820px;
+}
+.link {
+  text-align: center;
+  position: relative;
+  z-index: 5;
+  a {
+    display: inline-block;
+    width: 240px;
+    padding: 12px 32px;
+    text-decoration: none;
+    color: #fff;
+    text-align: center;
+    background: rgb(172, 57, 57);
+    transition: 0.3s;
+    &:hover {
+      background: rgb(53, 53, 52);
+      color: #fff;
+      transition: 0.3s;
+    }
+  }
+}
+
+.c-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px 16px;
+  @include mq() {
+    padding: 0;
+  }
+  &_item {
+    list-style: none;
+  }
+}
+.c-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.arrow_bottom {
+  padding-top: 4px;
+  width: 16px;
+  vertical-align: bottom;
+  float: right;
+  transition: 0.3s;
+  &.role {
+    transition: 0.3s;
+    transform: rotate(180deg);
+  }
+}
+
+.p-title {
+  width: 100%;
+  padding: 150px 0;
+  text-align: center;
+  @include mq(ls) {
+    padding: 160px 0;
+  }
+  @include mq() {
+    padding: 60px 0;
+    margin-top: 16px;
+  }
+  h1 {
+    margin: auto;
+    color: rgb(95, 92, 92);
+    font-size: 42px;
+    font-family: $main-font;
+    position: relative;
+    border: 4px solid transparent;
+    border-left-color: rgb(241, 241, 241);
+    border-right-color: rgb(169, 172, 42);
+    padding: 10px 24px;
+    width: fit-content;
+    text-align: center;
+    &::before,
+    &::after {
+      position: absolute;
+      left: -4px;
+      right: -4px;
+      bottom: -4px;
+      height: 4px;
+      background: linear-gradient(to right, rgb(243, 240, 240), rgb(169, 172, 42));
+      content: "";
+    }
+    &::before {
+      top: -4px;
+      bottom: -4px;
+    }
+    @include mq() {
+      font-size: 24px;
+    }
+  }
+}
+//===========================================================
+//ハンバーガー
+//===========================================================
+.bar {
+  width: 75px;
+  height: 70px;
+  position: fixed;
+  z-index: 100;
+  right: 20px;
+  top: 20px;
+  background: rgba(250, 249, 249, 0.5);
+  border-radius: 5px;
+  cursor: pointer;
+  display: none;
+  @include mq() {
+    display: block;
+    width: 60px;
+    height: 60px;
+  }
+
+  &-top {
+    width: 90%;
+    height: 4px;
+    background: #333;
+    position: absolute;
+    top: 10px;
+    left: 3px;
+    transition: 0.6s;
+
+    &.active {
+      transform: rotate(405deg);
+      transition: 0.6s;
+      top: 28px;
+    }
+  }
+  &-middle {
+    width: 90%;
+    height: 4px;
+    background: #333;
+    position: absolute;
+    top: 30px;
+    left: 3px;
+    transition: 0.6s;
+    @include mq() {
+      top: 25px;
+    }
+
+    &.active {
+      opacity: 0;
+      transition: 0.2s;
+      @include mq() {
+        bottom: 26px;
+      }
+    }
+  }
+  &-bottom {
+    width: 90%;
+    height: 4px;
+    background: #333;
+    position: absolute;
+    bottom: 15px;
+    left: 3px;
+    transition: 0.6s;
+
+    &.active {
+      transform: rotate(-405deg);
+      transition: 0.6s;
+      bottom: 28px;
+    }
+  }
+}
+
+//===========================================================
+//ページネーション
+//===========================================================
+.pagenation {
+  position: relative;
+  width: 100%;
+  margin: 40px auto;
+  @include mq(ls) {
+    width: 90%;
+  }
+  @include mq(md) {
+  }
+  @include mq() {
+    // position: absolute;
+    // bottom: -100px;
+  }
+  ul {
+    list-style: none;
+    li {
+      margin-right: 10px;
+      background: #333;
+      display: inline-block;
+      &.active {
+        padding: 10px 15px;
+        transition: 0.3s;
+        background: rgb(1, 71, 17);
+        color: #fff;
+      }
+      a {
+        padding: 10px 15px;
+        display: block;
+        width: 100%;
+        height: 100%;
+        color: #fff;
+        text-decoration: none;
+        transition: 0.3s;
+
+        &:hover {
+          transition: 0.3s;
+          background: rgb(1, 71, 17);
+          transition: 0.3s;
+          background: rgb(1, 71, 17);
+        }
+      }
+    }
+  }
+}
+
+//======================================================================
+.fnc {
+  // main variables, basically everything depends on $slidingAT
+  $slidingAT: 1s;
+  $slidingDelay: $slidingAT / 3 * 2;
+  $maskAT: $slidingAT * 0.7;
+  $headingAT: $slidingAT * 1.5;
+  $controlAT: $slidingAT/2;
+  $easing: ease-in-out;
+  $blendMode: luminosity;
+
+  $contentLeft: 40%;
+  $contentTop: 40%;
+
+  $headingPadding: 30px;
+  $headingFontSize: 100px;
+
+  $maskTop: 15%;
+  $maskRight: 100% - $contentLeft;
+  $maskHeight: 67vh;
+  $maskWidth: $maskHeight * 0.75;
+
+  $black: #1f2833;
+
+  /* you can add color names and their values here
+  and then simply add classes like .m--blend-$colorName to .fnc-slide 
+  to apply specific color for mask blend mode */
+  $bgColors: (
+    dark: lighten(#242424, 20%),
+    green: #42605e,
+    red: lighten(#6a0a0d, 10%),
+    blue: #2d7791,
+  );
+
+  &-slider {
+    overflow: hidden;
+    box-sizing: border-box;
+    position: relative;
+    height: 100vh;
+
+    *,
+    *:before,
+    *:after {
+      box-sizing: border-box;
+    }
+
+    &__slides {
+      position: relative;
+      height: 100%;
+      transition: transform $slidingAT $slidingDelay;
+    }
+
+    // iterate through color map and set colors for specific classes
+    @each $colorTheme, $bgColor in $bgColors {
+      .m--blend-#{$colorTheme} {
+        .fnc-slide__inner {
+          background-color: lighten($bgColor, 20%);
+        }
+
+        .fnc-slide__mask-inner {
+          background-color: $bgColor;
+        }
+      }
+
+      .m--navbg-#{$colorTheme} {
+        background-color: $bgColor;
+      }
+    }
+  }
+
+  &-slide {
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transform: translate3d(0, 0, 0);
+
+    &.m--before-sliding {
+      z-index: 2 !important;
+      transform: translate3d(100%, 0, 0);
+    }
+
+    &.m--active-slide {
+      z-index: 1;
+      transition: transform $slidingAT $slidingDelay $easing;
+      transform: translate3d(0, 0, 0);
+    }
+
+    &__inner {
+      position: relative;
+      height: 100%;
+      background-size: cover;
+      background-position: center top;
+      transform: translate3d(0, 0, 0);
+
+      .m--global-blending-active &,
+      .m--blend-bg-active & {
+        background-blend-mode: $blendMode;
+      }
+
+      .m--before-sliding & {
+        transform: translate3d(-100%, 0, 0);
+      }
+
+      .m--active-slide & {
+        transition: transform $slidingAT $slidingDelay $easing;
+        transform: translate3d(0, 0, 0);
+      }
+    }
+
+    &__mask {
+      $activeDelay: $slidingAT + $slidingDelay/3;
+      $xOffset: 200px;
+      $yOffset: 0;
+      $deg: 10deg;
+
+      overflow: hidden;
+      z-index: 1;
+      position: absolute;
+      right: $maskRight;
+      top: $maskTop;
+      width: $maskWidth;
+      height: $maskHeight;
+      margin-right: $headingPadding * -3;
+      // This line basically does all magic with masking effect. Very simple and elegant. Webkit only atm.
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 0 0, 6vh 0, 6vh 61vh, 44vh 61vh, 44vh 6vh, 6vh 6vh);
+      transform-origin: 50% 0;
+      transition-timing-function: $easing;
+      @include mq(ls) {
+        right: 40%;
+      }
+
+      .m--before-sliding & {
+        transform: rotate($deg * -1) translate3d($xOffset, 0, 0);
+        opacity: 0;
+      }
+
+      .m--active-slide & {
+        transition: transform $maskAT $activeDelay, opacity $maskAT/2 $activeDelay;
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+      }
+
+      .m--previous-slide & {
+        transition: transform $maskAT $slidingDelay/2, opacity $maskAT/2 $maskAT/2 + $slidingDelay/2;
+        transform: rotate($deg) translate3d($xOffset * -1, 0, 0);
+        opacity: 0;
+      }
+
+      &-inner {
+        z-index: -1;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 100vw;
+        height: 100vh;
+        margin-left: -50vw;
+        margin-top: -50vh;
+        background-size: cover;
+        background-position: center center;
+        background-blend-mode: $blendMode;
+        transform-origin: 50% (100vh - $maskHeight) / 2;
+        transition-timing-function: $easing;
+
+        .m--before-sliding & {
+          transform: translateY($yOffset) rotate($deg) translateX($xOffset * -1) translateZ(0);
+        }
+
+        .m--active-slide & {
+          transition: transform $maskAT $activeDelay;
+          transform: translateX(0);
+        }
+
+        .m--previous-slide & {
+          transition: transform $maskAT $slidingDelay/2;
+          transform: translateY($yOffset) rotate($deg * -1) translateX($xOffset) translateZ(0);
+        }
+      }
+    }
+
+    &__content {
+      z-index: 2;
+      position: absolute;
+      left: $contentLeft;
+      top: $contentTop;
+      @include mq() {
+        left: 10%;
+      }
+    }
+
+    &__heading {
+      margin-bottom: 10px;
+      text-transform: uppercase;
+
+      &-line {
+        overflow: hidden;
+        position: relative;
+        padding-right: 20px;
+        font-size: $headingFontSize;
+        color: #fff;
+        word-spacing: 10px;
+        @include mq() {
+          font-size: 50px;
+        }
+
+        &:nth-child(2) {
+          padding-left: $headingPadding;
+        }
+
+        .m--before-sliding & {
+          transform: translateY(100%);
+        }
+
+        .m--active-slide & {
+          transition: transform $headingAT $slidingDelay * 1.5;
+          transform: translateY(0);
+        }
+
+        .m--previous-slide & {
+          transition: transform $headingAT;
+          transform: translateY(-100%);
+        }
+
+        span {
+          display: block;
+
+          .m--before-sliding & {
+            transform: translateY(-100%);
+          }
+
+          .m--active-slide & {
+            transition: transform $headingAT $slidingDelay * 1.5;
+            transform: translateY(0);
+          }
+
+          .m--previous-slide & {
+            transition: transform $headingAT;
+            transform: translateY(100%);
+          }
+        }
+      }
+    }
+
+    &__action-btn {
+      $hoverAT: 0.3s;
+      $fontSize: 20px;
+      $vertPadding: 5px;
+      $lineHeight: $fontSize + $vertPadding * 2;
+
+      position: relative;
+      margin-left: 200px;
+      padding: $vertPadding 15px;
+      font-size: $fontSize;
+      line-height: 1;
+      color: transparent;
+      border: none;
+      text-transform: uppercase;
+      background: transparent;
+      cursor: pointer;
+      text-align: center;
+      outline: none;
+
+      span {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        perspective: 1000px;
+        transform-style: preserve-3d;
+        transition: transform $hoverAT;
+        transform-origin: 50% 0;
+        line-height: $lineHeight;
+        color: #fff;
+
+        &:before {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          border: 2px solid #fff;
+          border-top: none;
+          border-bottom: none;
+        }
+
+        &:after {
+          content: attr(data-text);
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          line-height: $lineHeight;
+          background: $black;
+          opacity: 0;
+          transform-origin: 50% 0;
+          transform: translateY(100%) rotateX(-90deg);
+          transition: opacity $hoverAT/2 $hoverAT/2;
+        }
+      }
+
+      &:hover span {
+        transform: rotateX(90deg);
+
+        &:after {
+          opacity: 1;
+          transition: opacity $hoverAT/2;
+        }
+      }
+    }
+  }
+
+  &-nav {
+    z-index: 5;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+    &__bgs {
+      z-index: -1;
+      overflow: hidden;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    &__bg {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+
+      &.m--nav-bg-before {
+        z-index: 2 !important;
+        transform: translateX(100%);
+      }
+
+      &.m--active-nav-bg {
+        z-index: 1;
+        transition: transform $slidingAT $slidingDelay;
+        transform: translateX(0);
+      }
+    }
+
+    &__controls {
+      font-size: 0;
+    }
+
+    &__control {
+      $controlWidth: 100px;
+      overflow: hidden;
+      position: relative;
+      display: inline-block;
+      vertical-align: top;
+      width: $controlWidth;
+      height: 50px;
+      font-size: 14px;
+      color: #fff;
+      text-transform: uppercase;
+      background: transparent;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      transition: background-color $controlAT;
+      @include mq() {
+        width: 92px;
+      }
+
+      &.m--active-control {
+        background: $black;
+      }
+
+      &-progress {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 2px;
+        background: #fff;
+        transform-origin: 0 50%;
+        transform: scaleX(0);
+        transition-timing-function: linear !important;
+
+        .m--with-autosliding .m--active-control & {
+          transform: scaleX(1);
+        }
+
+        .m--prev-control & {
+          transform: translateX(100%);
+          transition: transform 0.5s !important;
+        }
+
+        .m--reset-progress & {
+          transform: scaleX(0);
+          transition: transform 0s 0s !important;
+        }
+
+        .m--autosliding-blocked & {
+          transition: all 0s 0s !important;
+          transform: scaleX(0) !important;
+        }
+      }
+    }
+  }
+}
+
+/* NOT PART OF COMMON SLIDER STYLES */
+$font: "Open Sans", Helvetica, Arial, sans-serif;
+$creditsAT: 0.7s;
+$creditsWidth: 400px;
+
+body {
+  margin: 0;
+}
+
+.demo-cont {
+  overflow: hidden;
+  position: relative;
+  height: 100vh;
+  perspective: 1500px;
+  background: #000;
+
+  &__credits {
+    box-sizing: border-box;
+    overflow-y: auto;
+    z-index: 1;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: $creditsWidth;
+    height: 100%;
+    padding: 20px 10px 30px;
+    background: #303030;
+    font-family: $font;
+    color: #fff;
+    text-align: center;
+    transition: transform $creditsAT;
+    transform: translate3d(100%, 0, 0) rotateY(-45deg);
+    will-change: transform;
+
+    .credits-active & {
+      transition: transform $creditsAT $creditsAT/3;
+      transform: translate3d(0, 0, 0);
+    }
+
+    *,
+    *:before,
+    *:after {
+      box-sizing: border-box;
+    }
+
+    &-close {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      width: 28px;
+      height: 28px;
+      cursor: pointer;
+
+      &:before,
+      &:after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        width: 100%;
+        height: 2px;
+        margin-top: -1px;
+        background: #fff;
+      }
+      &:before {
+        transform: rotate(45deg);
+      }
+      &:after {
+        transform: rotate(-45deg);
+      }
+    }
+
+    &-heading {
+      text-transform: uppercase;
+      font-size: 40px;
+      margin-bottom: 20px;
+    }
+
+    &-img {
+      display: block;
+      width: 60%;
+      margin: 0 auto 30px;
+      border-radius: 10px;
+    }
+
+    &-name {
+      margin-bottom: 20px;
+      font-size: 30px;
+    }
+
+    &-link {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 24px;
+      color: #fff;
+    }
+
+    &-blend {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.example-slider {
+  z-index: 2;
+  transform: translate3d(0, 0, 0);
+  transition: transform $creditsAT;
+
+  .credits-active & {
+    transform: translate3d($creditsWidth * -1, 0, 0) rotateY(10deg) scale(0.9);
+  }
+
+  .fnc-slide {
+    .fnc-slide__inner:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .fnc-slide__inner:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  .fnc-slide__heading,
+  .fnc-slide__action-btn,
+  .fnc-nav__control {
+    font-family: $font;
+  }
+}
+
+/* COLORFUL SWITCH STYLES 
+   ORIGINAL DEMO - https://codepen.io/suez/pen/WQjwOb */
+$w: 180px;
+$_baseW: 280;
+$h: $w * 120 / $_baseW;
+$br: $w * 50 / $_baseW;
+$outerOffset: 5px;
+$animTime: 0.5s;
+$dotS: $w * 8 / $_baseW;
+$dotLeft: $w * 204 / $_baseW;
+$dotLeftOffset: $w * -125 / $_baseW;
+$offS: $w * 64 / $_baseW;
+$onLeft: $w * 162 / $_baseW;
+$onTop: $w * 35 / $_baseW;
+$onWidth: $w * 30 / $_baseW;
+$onHeight: $w * 56 / $_baseW;
+$cubIn: cubic-bezier(0.52, -0.96, 0.51, 1.28);
+$cubOut: cubic-bezier(0.67, -0.16, 0.47, 1.61);
+
+@mixin switchOn() {
+  .colorful-switch__checkbox:checked ~ .colorful-switch__label & {
+    @content;
+  }
+}
+
+.colorful-switch {
+  position: relative;
+  width: $w;
+  height: $h;
+  margin: 0 auto;
+  border-radius: $br;
+  background: #cfcfcf;
+
+  &:before {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    left: -$outerOffset;
+    top: -$outerOffset;
+    width: $w + $outerOffset * 2;
+    height: $h + $outerOffset * 2;
+    border-radius: $br + $outerOffset;
+    background: #314239;
+    transition: background-color 0.3s;
+  }
+
+  &:hover:before {
+    background: #4c735f;
+  }
+
+  &__checkbox {
+    z-index: -10;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+  }
+
+  &__label {
+    z-index: 1;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: $br;
+    cursor: pointer;
+  }
+
+  &__bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: $w * 3;
+    height: 100%;
+    background: linear-gradient(90deg, #14dcd6 0, #10e7bd $w, #ef9c29 $w * 2, #e76339 100%);
+    transition: transform $animTime;
+    transform: translate3d($w * -2, 0, 0);
+
+    @include switchOn {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  &__dot {
+    position: absolute;
+    left: $dotLeft;
+    top: 50%;
+    width: $dotS;
+    height: $dotS;
+    margin-left: $dotS/-2;
+    margin-top: $dotS/-2;
+    border-radius: 50%;
+    background: #fff;
+    transition: transform $animTime;
+    transform: translate3d(0, 0, 0);
+
+    @include switchOn {
+      transform: translate3d($dotLeftOffset, 0, 0);
+    }
+  }
+
+  &__on {
+    position: absolute;
+    left: $onLeft;
+    top: $onTop;
+    width: $onWidth;
+    height: $onHeight;
+    transition: transform $animTime;
+    transform: translate3d(0, 0, 0);
+
+    @include switchOn {
+      transform: translate3d($dotLeftOffset, 0, 0);
+    }
+
+    &__inner {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      transition: transform $animTime/2 0s $cubIn;
+      transform-origin: 100% 50%;
+      transform: rotate(45deg) scale(0) translateZ(0);
+
+      @include switchOn {
+        transition: transform $animTime/2 $animTime/2 $cubOut;
+        transform: rotate(45deg) scale(1) translateZ(0);
+      }
+
+      &:before,
+      &:after {
+        content: "";
+        position: absolute;
+        border-radius: $dotS/2;
+        background: #fff;
+      }
+      &:before {
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: $dotS + 1px;
+      }
+      &:after {
+        right: 0;
+        top: 0;
+        width: $dotS + 1px;
+        height: 100%;
+      }
+    }
+  }
+
+  &__off {
+    position: absolute;
+    left: $dotLeft;
+    top: 50%;
+    width: $offS;
+    height: $offS;
+    margin-left: $offS/-2;
+    margin-top: $offS/-2;
+    transition: transform $animTime;
+    transform: translate3d(0, 0, 0);
+
+    @include switchOn {
+      transform: translate3d($dotLeftOffset, 0, 0);
+    }
+
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 100%;
+      height: $dotS;
+      margin-top: $dotS/-2;
+      border-radius: $dotS/2;
+      background: #fff;
+      transition: transform $animTime/2 $animTime/2;
+
+      @include switchOn {
+        transition-delay: 0s;
+      }
+    }
+    &:before {
+      transform: rotate(45deg) scaleX(1) translateZ(0);
+
+      @include switchOn {
+        transform: rotate(45deg) scaleX(0) translateZ(0);
+      }
+    }
+    &:after {
+      transition-timing-function: $cubOut;
+      transform: rotate(-45deg) scaleX(1) translateZ(0);
+
+      @include switchOn {
+        transition-timing-function: ease;
+        transform: rotate(-45deg) scaleX(0) translateZ(0);
+      }
+    }
+  }
+}
+
+//===========================================================
+//slick
+//===========================================================
+//ドットの編集
+.dots {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -20px;
+
+  @include mq(ls) {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -20px;
+  }
+  @include mq() {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -40px;
+  }
+}
+
+.dots li {
+  margin: 30px 0 0 30px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+  opacity: 1;
+}
+.dots li::after {
+  content: "●";
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  top: -8px;
+  left: -10px;
+  color: rgb(94, 91, 91);
+  opacity: 1;
+  z-index: 3;
+}
+
+.dots li.slick-active::after {
+  color: rgb(145, 1, 35);
+}
+
+.dots li button {
+  opacity: 0;
+}
+
+.slick-slide {
+  transform: scale(0.76);
+}
+
+.slick-next {
+  position: absolute;
+  bottom: 50%;
+  width: 20px;
+  height: 20px;
+  right: 15px;
+  background: url("./img/arrow-r.png") no-repeat;
+  background-size: 100%;
+  @include mq(ls) {
+    right: 10px;
+  }
+}
+.slick-prev {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  bottom: 50%;
+  left: 15px;
+  background: url("./img/arrow-l.png") no-repeat;
+  background-size: 100%;
+}
+
+//SNSシェアエリア
+.share-area {
+  width: 100%;
+  text-align: center;
+  padding: 12px 10px;
+  color: #333;
+  p {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  ul {
+    list-style: none;
+    li {
+      display: inline-block;
+      position: relative;
+
+      a {
+        text-decoration: none;
+        color: #fff;
+        font-size: 30px;
+        padding: 0 16px;
+        width: 150px;
+        text-align: center;
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 12px;
+        transition: 0.3s;
+        &:hover {
+          opacity: 0.7;
+          transition: 0.3s;
+        }
+        span {
+          font-size: 16px;
+          display: inline-block;
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+}
+
+.fasebook {
+  background: royalblue;
+}
+
+.tweet {
+  background: rgb(78, 165, 228);
+}
+.line {
+  background: rgb(30, 195, 0);
+}
+
+.pocket {
+  background: rgb(238, 64, 86);
+}
+.hatena {
+  background: rgb(43, 111, 189);
+  &::before {
+    content: "B!";
+    font-family: Verdana;
+    font-weight: bold;
+    font-size: 25px;
+  }
+}

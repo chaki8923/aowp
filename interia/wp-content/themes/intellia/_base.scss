@@ -1,0 +1,454 @@
+$breakpoints: (
+  "sp": "screen and (max-width: 590px)",
+  "md": "screen and (max-width: 785px)",
+  "ls": "screen and (max-width: 1025px)",
+  "xl": "screen and (max-width: 1100px)",
+) !default;
+
+@mixin mq($breakpoint: sp) {
+  @media #{map-get($breakpoints,$breakpoint)} {
+    @content;
+  }
+}
+
+$main-font: "Cormorant", serif;
+
+$color: rgb(181, 157, 161);
+
+$font-color: #af9f8d;
+
+$style-font: "Playfair Display", serif;
+
+.page-content{
+  min-height: 100vh;
+  height: auto;
+  padding: 24px 16px;
+  h1{
+    color: #b59da1;
+    font-family: "Cormorant", serif;
+  }
+  h2{
+    color: #b59da1;
+    font-family: "Cormorant", serif;
+  }
+  h3{
+    color: #b59da1;
+    font-family: "Cormorant", serif;
+  }
+  h4{
+    color: #b59da1;
+    font-family: "Cormorant", serif;
+  }
+  p{
+    color: #b59da1;
+    font-family: "Cormorant", serif;
+
+  }
+  img{
+    width: auto;
+  }
+}
+
+.logo {
+  position: fixed;
+  top: 5px;
+  left: 6px;
+  z-index: 90;
+  img {
+    width: 120px;
+  }
+}
+
+.row-title {
+  position: absolute;
+  transform: rotate(90deg);
+  left: 16%;
+  top: 60px;
+  font-family: $style-font;
+  letter-spacing: 3px;
+  font-size: 72px;
+  font-weight: normal;
+  @include mq(ls) {
+    left: 0;
+  }
+  @include mq(md) {
+    left: -4%;
+  }
+  @include mq() {
+    left: -15%;
+    font-size: 36px;
+    z-index: 6;
+  }
+}
+
+//======================================
+//TOPへ戻る
+//======================================
+.top {
+  width: 60px;
+  height: 50px;
+  position: fixed;
+  z-index: 60;
+  right: 0;
+  bottom: 50px;
+  background: rgb(185, 119, 185);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: $style-font;
+  cursor: pointer;
+  @include mq() {
+    display: none;
+  }
+}
+//======================================
+//フェードスライダー
+//======================================
+.slide-content {
+  width: 40%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  position: absolute;
+  top: 100px;
+  right: 10%;
+  @include mq(ls) {
+    right: 10px;
+  }
+  @include mq(md) {
+    width: 65%;
+    height: 56%;
+    top: 400px;
+  }
+  @include mq() {
+    width: 85%;
+    height: 46%;
+    right: 0;
+    top: 520px;
+  }
+}
+
+.js-slide {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translateX(100%);
+  object-fit: cover;
+  z-index: 2;
+  opacity: 0;
+  transition: 1s;
+}
+
+.js-slide.slideout {
+  right: -100%;
+  z-index: 1;
+  opacity: 0;
+  transition: 1s;
+}
+
+.js-slide.slidein {
+  right: 100%;
+  transform-origin: right top;
+  transition: 2s;
+  z-index: 3;
+  opacity: 1;
+}
+
+//===========================================================
+//スマホ用フッター
+//===========================================================
+.sp-footer {
+  display: none;
+  width: 100%;
+  height: 50px;
+  background: #333;
+  position: fixed;
+  bottom: 0;
+  z-index: 100;
+  @include mq() {
+    display: block;
+  }
+  &--list {
+    display: flex;
+  }
+  &--item {
+    width: 25%;
+    display: inline-block;
+    list-style: none;
+    a {
+      text-decoration: none;
+      color: #fff;
+    }
+
+    &__tell {
+      display: flex;
+      justify-content: center;
+      padding-top: 2px;
+      box-sizing: border-box;
+      &-link {
+        padding-top: 10px;
+        text-decoration: none;
+        color: #fff;
+        display: block;
+        height: 50px;
+      }
+      border-right: 1px solid #fff;
+    }
+    &__sns {
+      border-right: 1px solid #fff;
+      text-align: center;
+      color: #fff;
+      padding-top: 12px;
+      &Open {
+        display: block;
+      }
+      &Close {
+        display: none;
+      }
+      img {
+        width: 20px;
+      }
+    }
+    &__blog {
+      color: #fff;
+      border-right: 1px solid #fff;
+      display: flex;
+      justify-content: center;
+      padding-top: 12px;
+    }
+    &__top {
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+.sns-area {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: none;
+  position: fixed;
+  bottom: 50px;
+  z-index: 100;
+  ul {
+    list-style: none;
+    text-align: center;
+    li {
+      display: inline-block;
+      padding: 10px 20px;
+      img {
+        width: 20px;
+      }
+    }
+  }
+}
+
+.clear {
+  clear: both;
+}
+
+.pagenation {
+  position: relative;
+  width: 100%;
+  margin: 40px auto 10px 20px;
+  @include mq(ls) {
+    width: 90%;
+  }
+  @include mq(md) {
+  }
+  @include mq() {
+    position: relative;
+    bottom: 10px;
+  }
+  ul {
+    list-style: none;
+    li {
+      margin-right: 10px;
+      background: #b59da1;
+      display: inline-block;
+      &.active {
+        padding: 10px 15px;
+        transition: 0.3s;
+        background: rgb(207, 16, 74);
+        color: #fff;
+      }
+      a {
+        padding: 10px 15px;
+        display: block;
+        width: 100%;
+        height: 100%;
+        color: #fff;
+        text-decoration: none;
+        transition: 0.3s;
+        @include mq(ls) {
+          padding: 10px 15px;
+        }
+        @include mq() {
+          padding: 6px 10px;
+        }
+        &:hover {
+          transition: 0.3s;
+          background: rgb(207, 16, 74);
+          transition: 0.3s;
+          background: rgb(207, 16, 74);
+        }
+      }
+    }
+  }
+}
+
+.clear {
+  clear: both;
+}
+
+//SNSシェアエリア
+.share-area {
+  width: 100%;
+  text-align: center;
+  padding: 12px 10px;
+  color: #333;
+  p{
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  ul {
+    list-style: none;
+    li {
+      display: inline-block;
+      position: relative;
+
+      a {
+        text-decoration: none;
+        color: #fff;
+        font-size: 30px;
+        padding: 0 16px;
+        width: 150px;
+        text-align: center;
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 12px;
+        transition: .3s;
+        &:hover{
+          opacity: .7;
+          transition: .3s;
+        }
+        span {
+          font-size: 16px;
+          display: inline-block;
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+}
+
+.fasebook {
+  background: royalblue;
+}
+
+.tweet {
+  background: rgb(78, 165, 228);
+}
+.line {
+  background: rgb(30, 195, 0);
+}
+
+.pocket {
+  background: rgb(238, 64, 86);
+}
+.hatena {
+  background: rgb(43,111,189);
+  &::before {
+    content: "B!";
+    font-family: Verdana;
+    font-weight: bold;
+    font-size: 25px;
+  }
+}
+
+
+//ローディング
+.loading{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background:#0dc5c1;
+  z-index: 100;
+}
+.loader {
+  font-size: 10px;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  transform: translateX(-50%);
+  text-indent: -9999em;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #ffffff;
+  background: -moz-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+  background: -webkit-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+  background: -o-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+  background: -ms-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+  background: linear-gradient(to right, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+  -webkit-animation: load3 1.4s infinite linear;
+  animation: load3 1.4s infinite linear;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  @include mq(){
+    left: 45%;
+  }
+  span{
+    position: absolute;
+    width: 75%;
+    height: 75%;
+    border-radius: 50%;
+    content: '';
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+}
+.loader:before {
+  width: 50%;
+  height: 50%;
+  background: #ffffff;
+  border-radius: 100% 0 0 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: '';
+}
+
+@-webkit-keyframes load3 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes load3 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}

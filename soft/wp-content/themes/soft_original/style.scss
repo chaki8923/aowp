@@ -1,0 +1,968 @@
+/*
+Theme Name: SOFT
+Author: Chaki Ryou
+Version: 1.0
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+*/
+
+// 1/13更新
+@import "css/base";
+@import "css/milky";
+@import "css/page";
+@import "css/single";
+@import "css/sidebar";
+@import "css/search";
+@import "css/contact";
+@import "css/404";
+@import "css/taxonomy";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body,html{
+  width: 100%;
+}
+
+
+.wp-block-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+.main {
+  width: 100%;
+  // height: 100vh;
+  position: relative;
+}
+//========================================================================
+// ヘッダー
+
+.top-menu {
+  height: 80px;
+  width: 100%;
+  background: rgb(0, 14, 0);
+  position: relative;
+  overflow: hidden;
+  div {
+    height: 100%;
+  }
+  @include mq(ls) {
+    display: none;
+  }
+
+
+  ul {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    list-style: none;
+    padding-right: 110px;
+    @include mq(ls) {
+      display: block;
+    }
+    a {
+      text-decoration: none;
+      color: #fff;
+      position: relative;
+      margin-right: 10px;
+      font-size: 14px;
+      display: block;
+      width: 100%;
+      height: 100%;
+      padding: 8px;
+    }
+    li {
+      width: fit-content;
+      padding: 4px;
+      text-align: center;
+      transition: 0.3s;
+      box-sizing: border-box;
+      &::after {
+        content: "";
+        background: #fff;
+        height: 1px;
+        width: 100%;
+        transform: scale(0, 1);
+        transform-origin: left bottom;
+        transition: 0.3s;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+      }
+      &:hover::after {
+        transform: scale(1, 1);
+        transition: 0.3s;
+        transform-origin: left bottom;
+      }
+      &:hover {
+        transform: translateY(-2px);
+        transition: 0.3s;
+      }
+    }
+  }
+ 
+}
+
+.sp-header {
+  display: none;
+  div {
+    height: 100%;
+  }
+
+  ul {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    list-style: none;
+    padding-right: 110px;
+    @include mq(ls) {
+      display: block;
+    }
+    a {
+      text-decoration: none;
+      color: #fff;
+      position: relative;
+      margin-right: 10px;
+      display: block;
+      width: 100%;
+      height: 100%;
+      padding: 8px;
+    }
+    li {
+      width: fit-content;
+      text-align: center;
+      transition: 0.3s;
+      box-sizing: border-box;
+      &::after {
+        content: "";
+        background: #fff;
+        height: 1px;
+        width: 100%;
+        transform: scale(0, 1);
+        transform-origin: left bottom;
+        transition: 0.3s;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+      }
+      &:hover::after {
+        transform: scale(1, 1);
+        transition: 0.3s;
+        transform-origin: left bottom;
+      }
+      &:hover {
+        transform: translateY(-2px);
+        transition: 0.3s;
+      }
+    }
+  }
+ 
+  @include mq(ls) {
+    display: block;
+    position: fixed;
+    z-index: 6;
+    top: 0;
+    right: 0;
+    transform: translateX(100%);
+    width: 50%;
+    height: 720px;
+    background: rgba(0, 0, 0, 0.6);
+    transition: 0.4s;
+    @include mq() {
+      width: 80%;
+    }
+  }
+  &.active {
+    transform: translateX(-0%);
+    transition: 0.5s;
+  }
+}
+//================================================================
+
+//================================================================
+//メイン画像
+.main-kyatch {
+  width: 100%;
+  position: relative;
+  img {
+    width: 100%;
+  }
+  h1 {
+    font-family: $font-family;
+    color: #fff;
+    text-shadow: 1px 1px 4px #fff;
+    width: 100%;
+    letter-spacing: 0.6rem;
+    line-height: 2em;
+    font-size: 40px;
+    text-align: center;
+    position: absolute;
+    bottom: 28%;
+    @include mq() {
+      font-size: 18px;
+    }
+    br {
+      display: none;
+      @include mq(ls) {
+        display: block;
+      }
+      @include mq() {
+        display: none;
+      }
+    }
+    span {
+      color: $btn-color;
+      font-size: 48px;
+    }
+  }
+}
+//================================================================
+
+//===========================ABOUT=====================================
+.about {
+  padding: 50px 10px 0 10px;
+  height: 900px;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(25px);
+  transition: 0.4s;
+  overflow: hidden;
+  @include mq(ls) {
+    height: auto;
+  }
+  &.fadein {
+    //フェードイン
+    opacity: 1;
+    transform: translateY(0);
+    transition: 0.8s;
+  }
+  &-inner {
+    width: 70%;
+    height: 100%;
+    margin: auto;
+    padding: 30px 0;
+    position: relative;
+    overflow: hidden;
+    @include mq(ls) {
+      width: 90%;
+    }
+    @include mq() {
+      width: 100%;
+    }
+    &__imgarea {
+      width: 50%;
+      height: 100%;
+      float: left;
+      @include mq() {
+        float: none;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+    &__img {
+      position: absolute;
+      top: 20px;
+      left: 0;
+      width: 25%;
+      height: auto;
+      @include mq() {
+        position: static;
+        width: 48%;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+      }
+      &2 {
+        top: 15rem;
+        left: 10rem;
+      }
+    }
+
+    &__textarea {
+      float: right;
+      width: 50%;
+      height: 85%;
+      text-align: center;
+      padding: 70px 10px 0 10px;
+      color: $font-color;
+      line-height: 2em;
+      font-family: $font-family;
+      font-size: 18px;
+      @include mq() {
+        float: none;
+        width: 100%;
+        padding: 20px 10px;
+      }
+
+      .txt-t {
+        margin-bottom: 25px;
+      }
+      .txt-m {
+        margin-bottom: 35px;
+      }
+    }
+  }
+}
+//======================================================================
+
+//===========================FEATURE=====================================
+.feature {
+  width: 100%;
+  height: auto;
+  margin-top: 40px;
+  background: $section-bc;
+  opacity: 0;
+  transform: translateY(25px);
+  transition: 0.4s;
+  padding-top: 45px;
+  &.fadein {
+    opacity: 1;
+    transform: translateY(0);
+    transition: 0.8s;
+  }
+  &-merit {
+    padding: 80px 15px 20px 15px;
+    @include mq() {
+      padding: 10px;
+      width: 95%;
+      margin: 20px auto;
+    }
+    &__inner {
+      width: 65%;
+      height: auto;
+      margin: 0 auto 30px auto;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: 0.4s;
+      @include mq(ls) {
+        width: 80%;
+        height: 245px;
+      }
+      @include mq(md) {
+        height: auto;
+      }
+      @include mq() {
+        width: 85%;
+        height: auto;
+        margin: 0 auto 20px auto;
+      }
+      &.fadein {
+        opacity: 1;
+        transition: 0.4s;
+        transform: translateY(0);
+      }
+    }
+    .js-merit__title {
+      width: 100%;
+      font-family: $font-family;
+      color: $font-color;
+      font-size: 40px;
+      text-align: left;
+      line-height: 3rem;
+      position: relative;
+      @include mq() {
+        font-size: 20px;
+        line-height: 1.6rem;
+      }
+
+      &::before {
+        content: "";
+        background: url("img/check.png") no-repeat;
+        background-size: contain;
+        background-position: center;
+        width: 60px;
+        height: 60px;
+        position: absolute;
+        left: -70px;
+        bottom: 0px;
+        @include mq(md) {
+          top: -5px;
+        }
+        @include mq() {
+          width: 30px;
+          height: 30px;
+          left: -35px;
+          top: -5px;
+        }
+      }
+    }
+    // タイトル下の説明文
+    p {
+      color: $font-color;
+      line-height: 1.7em;
+      font-family: $font-family;
+      letter-spacing: 0.3em;
+      font-size: 21px;
+      margin-top: 12px;
+      @include mq() {
+        font-size: 17px;
+      }
+    }
+  }
+}
+
+//======================================================================
+
+//===========================OPTION=====================================
+.option {
+  width: 100%;
+  height: auto;
+  margin-top: 48px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: 0.4s;
+  &.fadein {
+    opacity: 1;
+    transform: translateY(0);
+    transition: 0.4s;
+  }
+  &-box {
+    width: 80%;
+    height: auto;
+    margin: 54px auto 0 auto;
+    padding: 10px 15px;
+    border: 2px $base-color solid;
+    border-radius: 3px;
+    opacity: 0;
+    transition: 0.4s;
+    &:nth-last-child(1) {
+      margin: 54px auto 54px auto;
+    }
+    @include mq(ls) {
+      width: 90%;
+    }
+    @include mq() {
+      width: 95%;
+    }
+    &.fadein {
+      opacity: 1;
+      transition: 0.8s;
+    }
+    &__title {
+      font-size: 32px;
+      line-height: 2em;
+      width: 40%;
+      margin: auto;
+      text-align: center;
+      font-family: $font-family;
+      color: $font-color;
+      position: relative;
+      font-weight: normal;
+      @include mq(md) {
+        width: 50%;
+      }
+      @include mq() {
+        width: 100%;
+      }
+      &::before {
+        position: absolute;
+        bottom: 1.8rem;
+        left: -16rem;
+        width: 60%;
+        height: 2px;
+        content: "";
+        background: $btn-color;
+        @include mq(md) {
+          left: -10rem;
+          width: 50%;
+        }
+        @include mq() {
+          display: none;
+        }
+      }
+      &::after {
+        position: absolute;
+        bottom: 1.8rem;
+        right: -16rem;
+        width: 60%;
+        height: 2px;
+        content: "";
+        background: $btn-color;
+        background: $btn-color;
+        @include mq(md) {
+          right: -10rem;
+          width: 50%;
+        }
+        @include mq() {
+          display: none;
+        }
+      }
+    }
+    &__subtitle {
+      width: 100%;
+      text-align: center;
+      line-height: 3rem;
+      color: $font-color;
+      font-family: $font-family;
+      letter-spacing: 0.4em;
+    }
+    &__txt {
+      margin-top: 12px;
+      font-family: $font-family;
+      letter-spacing: 0.4em;
+      font-size: 21px;
+      color: rgb(51, 49, 49);
+    }
+  }
+}
+
+//======================================================================
+
+//===========================THEME=====================================
+
+.theme {
+  width: 100%;
+  height: auto;
+  margin-top: 48px;
+  opacity: 0;
+  transition: 0.4s;
+  &.fadein {
+    opacity: 1;
+    transition: 0.8s;
+  }
+  &-box {
+    max-width: 1200px;
+    height: auto;
+    margin: 40px auto 0 auto;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    @include mq(ls) {
+      width: 100%;
+    }
+  }
+
+  //テーマのパネルの中身
+  &-panel {
+    width: 370px;
+    height: auto;
+    padding: 20px 0;
+    font-family: "Times New Roman", 游明朝, YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", HG明朝E, メイリオ,
+      Meiryo, serif;
+    color: $font-color;
+    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+    margin-bottom: 20px;
+    margin-right: auto;
+    margin-left: 1%;
+
+    @include mq(ls) {
+      width: 46%;
+      margin-left: 2%;
+    }
+    @include mq() {
+      width: 90%;
+      margin: 20px auto;
+    }
+    &__inner {
+      margin: auto;
+      width: 90%;
+      height: auto;
+    }
+    &__img {
+      display: block;
+      width: 95%;
+      height: 174.8px;
+      margin: auto;
+
+      @include mq(ls) {
+        height: 249px;
+      }
+      @include mq(md) {
+        height: 184px;
+      }
+      @include mq() {
+        height: 190px;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        aspect-ratio: 4/3;
+      }
+    }
+    &__txt {
+      font-size: 16px;
+      line-height: 2rem;
+      margin-top: 10px;
+      @include mq(ls) {
+        font-size: 20px;
+      }
+    }
+    &__plice {
+      font-size: 32px;
+      margin-top: 16px;
+      font-weight: normal;
+      span {
+        display: inline-block;
+        text-align: center;
+        padding: 0 7px;
+        background: $base-color;
+        width: auto;
+        height: 40px;
+        color: #fff;
+        font-size: 24px;
+        letter-spacing: 0.3rem;
+        margin: 0 10px 0;
+      }
+    }
+  }
+}
+.whatuse {
+  opacity: 1;
+}
+.size-l {
+  width: 100%;
+  span {
+    width: 100%;
+    display: block;
+  }
+}
+//======================================================================
+
+//===========================NEWS=====================================
+
+.news {
+  width: 100%;
+  height: 400px;
+  background: $section-bc;
+  margin-top: 88px;
+  padding: 32px 48px;
+  position: relative;
+  opacity: 0;
+  transform: translateY(1px);
+  transition: 0.5s;
+  &.fadein {
+    opacity: 1;
+    transform: translateY(0);
+    transition: 0.5s;
+  }
+  @include mq(ls) {
+    height: 450px;
+  }
+
+  &-inner {
+    width: 400px;
+    margin: 20px 0 0 90px;
+    @include mq(ls) {
+      width: 700px;
+    }
+    @include mq(md) {
+      width: 100%;
+      margin: 0;
+    }
+    @include mq() {
+      width: 100%;
+      margin: 0;
+    }
+    ul {
+      list-style: none;
+      a {
+        text-decoration: none;
+        li {
+          display: flex;
+          color: $font-color;
+          font-family: $font-family;
+          line-height: 2rem;
+          @include mq(ls) {
+            font-size: 24px;
+            width: 100%;
+            line-height: 3rem;
+          }
+          @include mq() {
+            font-size: 14px;
+            line-height: 2rem;
+          }
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}
+
+.news-list {
+  text-decoration: none;
+  width: 200px;
+  display: block;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 10px;
+  padding: 12px 10px;
+  background: #fff;
+  border: 2px #333 solid;
+  text-align: center;
+  color: #333;
+  transition: 0.3s;
+  @include mq(md) {
+    position: relative;
+    margin-top: 24px;
+  }
+  &:hover {
+    transition: 0.3s;
+    color: #fff;
+    background: #333;
+  }
+}
+.back {
+  position: relative;
+}
+//======================================================================
+
+//===========================MAP=====================================
+.map {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  height: 640px;
+  align-items: center;
+  @include mq() {
+    flex-wrap: wrap;
+    height: auto;
+  }
+  iframe {
+    width: 50%;
+    height: 100%;
+    @include mq() {
+      width: 100%;
+      height: 350px;
+    }
+  }
+}
+
+.time-area {
+  width: 50%;
+  @include mq() {
+    width: 100%;
+  }
+
+  table {
+    width: 100%;
+    border-spacing: 0;
+    column-rule: 0;
+    background: rgba(243, 242, 241, 0.6);
+    .table-title {
+      background: $base-color;
+      font-family: $font-family;
+      color: #fff;
+      letter-spacing: 0.2em;
+      font-size: 22px;
+    }
+    tr {
+      th {
+        padding: 10px 8px;
+        border: 1px solid #ddd;
+        font-family: $font-family;
+      }
+      td {
+        padding: 10px 20px;
+        text-align: center;
+        border: 1px solid #ddd;
+        font-size: 16px;
+      }
+    }
+  }
+}
+.address {
+  width: 100%;
+  padding: 16px 10px;
+  h2,
+  h1 {
+    letter-spacing: 0.11em;
+    color: rgb(112, 108, 108);
+    line-height: 2rem;
+    font-family: $font-family;
+    font-weight: normal;
+    line-height: 3rem;
+  }
+  a {
+    text-decoration: none;
+    color: #fff;
+    background: rgb(209, 163, 38);
+    display: block;
+    padding: 10px 20px;
+    text-align: center;
+    width: 150px;
+    border-radius: 4px;
+    transition: 0.3s;
+    position: relative;
+    bottom: 10px;
+    &:hover {
+      opacity: 0.6;
+      transition: 0.3s;
+    }
+  }
+}
+
+//======================================================================
+
+//===========================footer=====================================
+
+.footer {
+  width: 100%;
+  height: 60px;
+  background: rgb(11, 12, 11);
+  position: relative;
+  bottom: 0;
+  z-index: 3;
+  @include mq() {
+    height: 170px;
+    padding: 30px 15px;
+  }
+  ul {
+    width: 80%;
+    height: 60px;
+    margin: auto;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    @include mq(ls) {
+      width: 100%;
+      justify-content: center;
+    }
+    @include mq() {
+      width: 80%;
+      justify-content: flex-start;
+      margin: 0;
+    }
+    li {
+      padding: 3px 10px;
+      margin-right: 25px;
+      font-size: 14px;
+      a {
+        text-decoration: none;
+        color: #fff;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+.page-footer {
+  margin-top: 40px;
+}
+
+.voice {
+  opacity: 0;
+  transform: translateY(1px);
+  transition: 0.5s;
+  margin: 36px 0;
+  position: relative;
+  &.fadein {
+    opacity: 1;
+    transform: translateY(0);
+    transition: 0.5s;
+  }
+  &-content {
+    width: 100%;
+    height: 320px;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-around;
+    margin: 16px 0;
+    text-decoration: none;
+    @include mq() {
+      flex-wrap: wrap;
+      justify-content: center;
+      height: auto;
+    }
+  }
+
+  .fase {
+    width: 30%;
+    overflow: hidden;
+    border-radius: 5px;
+    @include mq() {
+      width: 80%;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: 0.4s;
+      &.zoom {
+        transform: scale(1.1);
+        transition: 0.4s;
+        opacity: 0.8;
+      }
+    }
+  }
+  &-text {
+    position: relative;
+    display: inline-block;
+    padding: 7px 10px;
+    color: #555;
+    font-size: 16px;
+    background: #e0edff;
+    width: 60%;
+    height: 100%;
+    margin-left: 16px;
+    @include mq() {
+      width: 100%;
+      margin: 30px 0 0 0;
+    }
+    h2 {
+      text-align: center;
+      line-height: 2em;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: -60px;
+      margin-top: -15px;
+      border: 30px solid transparent;
+      border-right: 30px solid #e0edff;
+      @include mq() {
+        display: none;
+      }
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      margin-left: -15px;
+      border: 15px solid transparent;
+      border-bottom: 15px solid #e0edff;
+      display: none;
+      @include mq() {
+        display: block;
+      }
+    }
+  }
+  &-list {
+    text-decoration: none;
+    display: block;
+    width: 200px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -70px;
+    padding: 12px 10px;
+    background: #fff;
+    border: 2px #333 solid;
+    text-align: center;
+    color: #333;
+    transition: 0.3s;
+    &:hover {
+      transition: 0.3s;
+      color: #fff;
+      background: #333;
+    }
+  }
+}

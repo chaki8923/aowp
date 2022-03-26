@@ -1,0 +1,46 @@
+.voice-inner{
+  min-height: 740px;
+  @include mq(ls){
+    min-height: 1366px;
+  }
+  @include mq(md){
+    min-height: 1024px;
+  }
+
+  @include mq(){
+    min-height: 812px;
+  }
+}
+
+
+.voice-tab{
+  width: 100%;
+  margin-top: 80px;
+
+  p{
+    text-align: center;
+  }
+  ul{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    li{
+      display: inline-block;
+      background: #ddd;
+      margin-right: 10px;
+      a{
+        padding: 10px 16px;
+        text-decoration: none;
+        color: #333;
+        transition: .3s;
+        font-weight: bold;
+        display: block;
+        &:hover{
+          transition: .2s;
+          opacity: .7;
+        }
+      }
+    }
+  }
+}

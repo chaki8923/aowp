@@ -1,0 +1,25 @@
+/*
+Theme Name: ENDIVIDUAL
+Author: Chaki Ryou
+Version: 1.0
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+*/
+
+
+@import "base";
+@import "utility";
+@import "category";
+@import "section";
+@import "worklist";
+@import "sidebar";
+@import "single";
+@import "search";
+@import "404";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+}
+
